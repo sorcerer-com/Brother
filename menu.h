@@ -75,7 +75,7 @@ void selectMenu(Context& context)
   else if (context.menuIndex == 2) // Button 1 Activ?
   {
     context.buttonsEnabled[1] = enableDisable(context, context.buttonsEnabled[1]);
-    context.writeEEPROM(context.eeprom.buttonsEnabled[1], context.buttonsEnabled[1]);
+    context.writeToEEPROM(context.eeprom.buttonsEnabled[1], context.buttonsEnabled[1]);
 #ifdef DEBUG
     if (context.buttonsEnabled[1])
       Serial.println("Enable Button 1");

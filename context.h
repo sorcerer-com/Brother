@@ -3,6 +3,9 @@
 
 #define DEBUG
 
+#include <Wire.h>
+// https://arduino-info.wikispaces.com/LCD-Blue-I2C
+// https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads
 #include <LiquidCrystal_I2C.h>
 #include <EEPROM.h>
 
@@ -19,15 +22,15 @@ public:
   const int buttonsCount = 6;
   const int buttonsPins[6] = { 2, 3, 4, 5, 6, 7 };
 
-  const LiquidCrystal_I2C& lcd;
+  const LiquidCrystal_I2C lcd;
 
   int menuIndex = -1;
 
   bool buttonsEnabled[6] = { true, true, true, true, true, true };
 
 
-  Context(const LiquidCrystal_I2C& _lcd):
-    lcd(_lcd)
+  Context():
+    lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE)  // Set the LCD I2C address
   {
   }
   
@@ -63,15 +66,15 @@ public:
 #endif
     for (int i = 0; i < this->buttonsCount; i++)
     {
-      EEPROM.get(context.eeprom.buttonsEnabled[i], context.buttonsEnabled[i]);
+      EEPROM.get(this->eeprom.buttonsEnabled[i], this->buttonsEnabled[i]);
 #ifdef DEBUG
-      Serial.println("Read Button enabled " + String(i) + " " + String(context.buttonsEnabled[i]));
+      Serial.println("Read Button enabled " + String(i) + " " + String(this->buttonsEnabled[i]));
 #endif
     }
   }
   
   template< typename T > 
-  void writeEEPROM(int address, const T& t ) const
+  void writeToEEPROM(int address, const T& t ) const
   {
     EEPROM.put(address, t);
   }

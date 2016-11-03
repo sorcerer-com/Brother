@@ -1,12 +1,6 @@
-#include <Wire.h>
-// https://arduino-info.wikispaces.com/LCD-Blue-I2C
-// https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads
-#include <LiquidCrystal_I2C.h>
-
 #include "menu.h"
 
-LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
-Context context(lcd);
+Context context;
 
 /*-----( SETUP: RUNS ONCE )-----*/
 void setup()
