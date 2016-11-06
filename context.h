@@ -14,8 +14,10 @@
 class Context
 {
 public:
+  const int menuButtonPin = 2;
   const int buttonsCount = 6;
-  const int buttonsPins[6] = { 2, 3, 4, 5, 6, 7 };
+  const int buttonsPins[6] = { 3, 4, 5, 6, 7, 8 };
+  const int relayPins[6] = { 9, 10, 11, 12, 13, 14 };
 
   const struct
   {
@@ -68,7 +70,7 @@ public:
       if (EEPROM[this->eeprom.buttonsEnabled[i]] != 0xff)
         EEPROM.get(this->eeprom.buttonsEnabled[i], this->buttonsEnabled[i]);
 #ifdef DEBUG
-      Serial.println("Read Button enabled " + String(i) + " " + String(this->buttonsEnabled[i]));
+      Serial.println("Read Button enabled " + String(i + 1) + " " + String(this->buttonsEnabled[i]));
 #endif
     }
   }

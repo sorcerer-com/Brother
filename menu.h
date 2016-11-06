@@ -9,51 +9,51 @@ void waitEsc(const Context& context);
 
 void checkMenu(Context& context)
 {
-  if (context.menuIndex == -1 && digitalRead(context.buttonsPins[0]) == LOW) // open menu
+  if (context.menuIndex == -1 && digitalRead(context.menuButtonPin) == LOW) // open menu
   {
 #ifdef DEBUG
     Serial.println("Open Menu");
 #endif
-    while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
+    while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
     context.menuIndex = 0;
     context.refreshDisplay();
   }
   
   if (context.menuIndex != -1) // menu is opened
   {
-    if (digitalRead(context.buttonsPins[1]) == LOW) // down pressed
+    if (digitalRead(context.buttonsPins[0]) == LOW) // down pressed
     {
 #ifdef DEBUG
       Serial.println("Down Menu");
 #endif
-      while (digitalRead(context.buttonsPins[1]) == LOW) delay(100); // wait to release the button
+      while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
       context.menuIndex++;
       if (context.menuIndex > MenuCount) context.menuIndex = 0;
     }
-    if (digitalRead(context.buttonsPins[2]) == LOW) // up pressed
+    if (digitalRead(context.buttonsPins[1]) == LOW) // up pressed
     {
 #ifdef DEBUG
       Serial.println("Up Menu");
 #endif
-      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
+      while (digitalRead(context.buttonsPins[1]) == LOW) delay(100); // wait to release the button
       context.menuIndex--;
       if (context.menuIndex < 0) context.menuIndex = MenuCount - 1;
     }
-    if (digitalRead(context.buttonsPins[3]) == LOW) // exit pressed
+    if (digitalRead(context.buttonsPins[2]) == LOW) // exit pressed
     {
 #ifdef DEBUG
       Serial.println("Exit Menu");
 #endif
-      while (digitalRead(context.buttonsPins[3]) == LOW) delay(100); // wait to release the button
+      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
       context.menuIndex = -1;
     }
-    if (digitalRead(context.buttonsPins[0]) == LOW) // enter pressed
+    if (digitalRead(context.menuButtonPin) == LOW) // enter pressed
     {
 #ifdef DEBUG
       String str = "Select Menu " + String(context.menuIndex);
       Serial.println(str.c_str());
 #endif
-      while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
+      while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
       selectMenu(context);
     }
     else
@@ -96,9 +96,9 @@ bool enableDisable(const Context& context, bool newValue)
 
   for (int i = 0; i < 30*100; i++)
   {
-    if (digitalRead(context.buttonsPins[0]) == LOW) // enter pressed
+    if (digitalRead(context.menuButtonPin) == LOW) // enter pressed
     {
-      while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
+      while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
       newValue = !newValue;
       context.lcd.setCursor(0, 1);
       if (newValue)
@@ -108,9 +108,9 @@ bool enableDisable(const Context& context, bool newValue)
       delay(100);
       break;
     }
-    if (digitalRead(context.buttonsPins[3]) == LOW) // exit pressed
+    if (digitalRead(context.buttonsPins[2]) == LOW) // exit pressed
     {
-      while (digitalRead(context.buttonsPins[3]) == LOW) delay(100); // wait to release the button
+      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
       break;
     }
 
@@ -122,8 +122,8 @@ bool enableDisable(const Context& context, bool newValue)
   
 void waitEsc(const Context& context)
 {
-  while (digitalRead(context.buttonsPins[3]) == HIGH) delay(100); // wait to press Exit
-  while (digitalRead(context.buttonsPins[3]) == LOW) delay(100); // wait to release Exit
+  while (digitalRead(context.buttonsPins[2]) == HIGH) delay(100);// { delay(100); Serial.println("HIGH"); } // wait to press Exit
+  while (digitalRead(context.buttonsPins[2]) == LOW) delay(100);// { delay(100); Serial.println("LOW"); } // wait to release Exit
 }
 
 #endif // MENU_H
