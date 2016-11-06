@@ -54,7 +54,7 @@ public:
       this->lcd.print(Ready_cyr);
     }
     else
-      this->lcd.print(Menu[this->menuIndex]);
+      this->lcd.print(Menu(this->menuIndex));
   }
   
   
