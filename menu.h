@@ -5,6 +5,7 @@
 
 void selectMenu(Context& context);
 bool enableDisable(const Context& context, bool newValue);
+void waitEsc(const Context& context);
 
 void checkMenu(Context& context)
 {
@@ -66,21 +67,21 @@ void selectMenu(Context& context)
   {
     context.lcd.setCursor(0, 1);
     context.lcd.print(CODE);
-    context.waitEsc();
+    waitEsc(context);
 #ifdef DEBUG
     String str = String("VT CODE ") + CODE + "\n";
     Serial.println(str.c_str());
 #endif
   } 
-  else if (context.menuIndex == 2) // Button 1 Activ?
+  else if (context.menuIndex >= 2 && context.menuIndex <= 6) // Button 1/2/3/4/5 Activ?
   {
-    context.buttonsEnabled[1] = enableDisable(context, context.buttonsEnabled[1]);
-    context.writeToEEPROM(context.eeprom.buttonsEnabled[1], context.buttonsEnabled[1]);
+    int btnIdx = context.menuIndex - 1;
+    context.buttonsEnabled[btnIdx] = enableDisable(context, context.buttonsEnabled[btnIdx]);
+    context.writeToEEPROM(context.eeprom.buttonsEnabled[btnIdx], context.buttonsEnabled[btnIdx]);
+    // TODO: if(vEN3 && (cred3 != 0)) rem3 = 1;
 #ifdef DEBUG
-    if (context.buttonsEnabled[1])
-      Serial.println("Enable Button 1");
-    else
-      Serial.println("Disable Button 1");
+    String str = String(context.buttonsEnabled[btnIdx] ? "Enable" : "Disable") + " Button " + String(btnIdx);
+    Serial.println(str);
 #endif
   }
 }
@@ -117,6 +118,12 @@ bool enableDisable(const Context& context, bool newValue)
   }
 
   return newValue;
+}
+  
+void waitEsc(const Context& context)
+{
+  while (digitalRead(context.buttonsPins[3]) == HIGH) delay(100); // wait to press Exit
+  while (digitalRead(context.buttonsPins[3]) == LOW) delay(100); // wait to release Exit
 }
 
 #endif // MENU_H

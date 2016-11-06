@@ -17,9 +17,9 @@ void setup()
     pinMode(context.buttonsPins[i], INPUT_PULLUP);
   }
 
+  context.readEEPROM();
   context.initDisplay();
   context.refreshDisplay();
-
 }
 
 

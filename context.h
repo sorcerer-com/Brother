@@ -14,19 +14,18 @@
 class Context
 {
 public:
+  const int buttonsCount = 6;
+  const int buttonsPins[6] = { 2, 3, 4, 5, 6, 7 };
+
   const struct
   {
     const int buttonsEnabled[6] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05 };
   } eeprom;
-  
-  const int buttonsCount = 6;
-  const int buttonsPins[6] = { 2, 3, 4, 5, 6, 7 };
-
-  const LiquidCrystal_I2C lcd;
-
-  int menuIndex = -1;
 
   bool buttonsEnabled[6] = { true, true, true, true, true, true };
+  
+  const LiquidCrystal_I2C lcd;
+  int menuIndex = -1;
 
 
   Context():
@@ -66,7 +65,8 @@ public:
 #endif
     for (int i = 0; i < this->buttonsCount; i++)
     {
-      EEPROM.get(this->eeprom.buttonsEnabled[i], this->buttonsEnabled[i]);
+      if (EEPROM[this->eeprom.buttonsEnabled[i]] != 0xff)
+        EEPROM.get(this->eeprom.buttonsEnabled[i], this->buttonsEnabled[i]);
 #ifdef DEBUG
       Serial.println("Read Button enabled " + String(i) + " " + String(this->buttonsEnabled[i]));
 #endif
@@ -77,13 +77,6 @@ public:
   void writeToEEPROM(int address, const T& t ) const
   {
     EEPROM.put(address, t);
-  }
-  
-  
-  void waitEsc() const
-  {
-    while (digitalRead(this->buttonsPins[3]) == HIGH) delay(100); // wait to press Exit
-    while (digitalRead(this->buttonsPins[3]) == LOW) delay(100); // wait to release Exit
   }
 
 };
