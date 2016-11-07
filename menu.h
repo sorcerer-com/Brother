@@ -63,26 +63,37 @@ void checkMenu(Context& context)
 
 void selectMenu(Context& context)
 {
-  if (context.menuIndex == 1) // VT code
+  if (context.menuIndex == 1)                                 // VT code
   {
+#ifdef DEBUG
+    String str = String("VT CODE ") + CODE;
+    Serial.println(str.c_str());
+#endif
     context.lcd.setCursor(0, 1);
     context.lcd.print(CODE);
     waitEsc(context);
-#ifdef DEBUG
-    String str = String("VT CODE ") + CODE + "\n";
-    Serial.println(str.c_str());
-#endif
   } 
-  else if (context.menuIndex >= 2 && context.menuIndex <= 6) // Button 1/2/3/4/5 Activ?
+  else if (context.menuIndex >= 2 && context.menuIndex <= 6)  // Button 1/2/3/4/5 Activ?
   {
-    int btnIdx = context.menuIndex - 1;
+    int btnIdx = context.menuIndex - 2;
     context.buttonsEnabled[btnIdx] = enableDisable(context, context.buttonsEnabled[btnIdx]);
     context.writeToEEPROM(context.eeprom.buttonsEnabled[btnIdx], context.buttonsEnabled[btnIdx]);
-    // TODO: if(vEN3 && (cred3 != 0)) rem3 = 1;
+    // TODO: if(vEN3 && (cred3 != 0)) rem3 = 1; ?
 #ifdef DEBUG
     String str = String(context.buttonsEnabled[btnIdx] ? "Enable" : "Disable") + " Button " + String(btnIdx);
     Serial.println(str);
 #endif
+  }
+  else if (context.menuIndex >= 7 && context.menuIndex <= 11) // Test Relay 1/2/3/4/5
+  {
+    int relayIdx = context.menuIndex - 7;
+#ifdef DEBUG
+    String str = String("Test Relay ") + String(relayIdx);
+    Serial.println(str);
+#endif
+    // TODO: if (WORK != relayIdx) ?
+    context.test(relayIdx);
+    waitEsc(context);
   }
 }
 

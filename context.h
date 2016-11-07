@@ -15,13 +15,13 @@ class Context
 {
 public:
   const int menuButtonPin = 2;
-  const int buttonsCount = 6;
-  const int buttonsPins[6] = { 3, 4, 5, 6, 7, 8 };
-  const int relayPins[6] = { 9, 10, 11, 12, 13, 14 };
+  const int buttonsCount = 5;
+  const int buttonsPins[5] = { 3, 4, 5, 6, 7 };
+  const int relaysPins[5] = { 8, 9, 10, 11, 12 };
 
   const struct
   {
-    const int buttonsEnabled[6] = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05 };
+    const int buttonsEnabled[5] = { 0x00, 0x01, 0x02, 0x03, 0x04 };
   } eeprom;
 
   bool buttonsEnabled[6] = { true, true, true, true, true, true };
@@ -34,6 +34,35 @@ public:
     lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE)  // Set the LCD I2C address
   {
   }
+
+  void setupPins() const
+  {
+  #ifdef DEBUG
+    String str = "Setup main button pin " + String(menuButtonPin);
+    Serial.println(str.c_str());
+  #endif
+    pinMode(menuButtonPin, INPUT_PULLUP);
+    
+    for (int i = 0; i < buttonsCount; i++)
+    {
+  #ifdef DEBUG
+      String str = "Setup button" + String(i + 1) + " pin " + String(buttonsPins[i]);
+      Serial.println(str.c_str());
+  #endif
+      pinMode(buttonsPins[i], INPUT_PULLUP);
+    }
+    
+    for (int i = 0; i < buttonsCount; i++)
+    {
+  #ifdef DEBUG
+      String str = "Setup relay" + String(i + 1) + " pin " + String(relaysPins[i]);
+      Serial.println(str.c_str());
+  #endif
+      pinMode(relaysPins[i], OUTPUT);
+      digitalWrite(relaysPins[i], LOW);
+    }
+  }
+
   
   void initDisplay() const
   {
@@ -41,22 +70,22 @@ public:
     Serial.println("Initialize LCD");
 #endif
     // initialize the lcd for 16 chars 2 lines, turn on backlight
-    this->lcd.begin(16, 2);
-    this->lcd.backlight();
+    lcd.begin(16, 2);
+    lcd.backlight();
   }
   
   void refreshDisplay() const
   {
-    this->lcd.clear();
-    this->lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
-    if (this->menuIndex == -1)
+    lcd.clear();
+    lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
+    if (menuIndex == -1)
     {
-      this->lcd.print(Welcome);
-      this->lcd.setCursor(0, 1);
-      this->lcd.print(Ready_cyr);
+      lcd.print(Welcome);
+      lcd.setCursor(0, 1);
+      lcd.print(Ready_cyr);
     }
     else
-      this->lcd.print(Menu(this->menuIndex));
+      lcd.print(Menu(menuIndex));
   }
   
   
@@ -65,12 +94,12 @@ public:
 #ifdef DEBUG
     Serial.println("Read EEPROM");
 #endif
-    for (int i = 0; i < this->buttonsCount; i++)
+    for (int i = 0; i < buttonsCount; i++)
     {
-      if (EEPROM[this->eeprom.buttonsEnabled[i]] != 0xff)
-        EEPROM.get(this->eeprom.buttonsEnabled[i], this->buttonsEnabled[i]);
+      if (EEPROM[eeprom.buttonsEnabled[i]] != 0xff)
+        EEPROM.get(eeprom.buttonsEnabled[i], buttonsEnabled[i]);
 #ifdef DEBUG
-      Serial.println("Read Button enabled " + String(i + 1) + " " + String(this->buttonsEnabled[i]));
+      Serial.println("Read Button enabled " + String(i + 1) + " " + String(buttonsEnabled[i]));
 #endif
     }
   }
@@ -79,6 +108,30 @@ public:
   void writeToEEPROM(int address, const T& t ) const
   {
     EEPROM.put(address, t);
+  }
+
+
+  void test(int relayIdx)
+  {
+    // TODO: credit[relayIdx] = 30; ?
+    relayOnOff(relayIdx, true);
+    lcd.setCursor(0, 1);
+    lcd.print(TESTS);
+    delay(1000); // TODO: remove
+    // TODO: while (credit[relayIdx] > 0) ...
+    relayOnOff(relayIdx, false);
+    // TODO: credit[relayIdx] = 0;
+    lcd.setCursor(0, 1);
+    lcd.print(TESTF);
+  }
+
+  void relayOnOff(int relayIdx, bool on)
+  {
+#ifdef DEBUG
+    String str = String("Relay ") + (on ? "On" : "Off");
+    Serial.println(str);
+#endif
+    digitalWrite(relaysPins[relayIdx], on ? HIGH : LOW); 
   }
 
 };
