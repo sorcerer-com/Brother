@@ -22,9 +22,11 @@ public:
   const struct
   {
     const int buttonsEnabled[5] = { 0x00, 0x01, 0x02, 0x03, 0x04 };
+    const int totals[6] = { 0x06, 0x0A, 0x0E, 0x12, 0x16, 0x1A };
   } eeprom;
 
-  bool buttonsEnabled[6] = { true, true, true, true, true, true };
+  bool buttonsEnabled[5] = { true, true, true, true, true}; // 1 byte
+  unsigned long totals[6] = { 0, 0, 0, 0, 0, 0 }; // 4 byte, last value is total counter
   
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
@@ -94,12 +96,22 @@ public:
 #ifdef DEBUG
     Serial.println("Read EEPROM");
 #endif
+
     for (int i = 0; i < buttonsCount; i++)
     {
       if (EEPROM[eeprom.buttonsEnabled[i]] != 0xff)
         EEPROM.get(eeprom.buttonsEnabled[i], buttonsEnabled[i]);
 #ifdef DEBUG
-      Serial.println("Read Button enabled " + String(i + 1) + " " + String(buttonsEnabled[i]));
+      Serial.println("Read Button" + String(i + 1) + " enabled: " + String(buttonsEnabled[i]));
+#endif
+    }
+    
+    for (int i = 0; i <= buttonsCount; i++)
+    {
+      if (EEPROM[eeprom.totals[i]] != 0xff)
+        EEPROM.get(eeprom.totals[i], totals[i]);
+#ifdef DEBUG
+      Serial.println("Read Total" + String(i + 1) + ": " + String(totals[i]));
 #endif
     }
   }
@@ -111,20 +123,6 @@ public:
   }
 
 
-  void test(int relayIdx)
-  {
-    // TODO: credit[relayIdx] = 30; ?
-    relayOnOff(relayIdx, true);
-    lcd.setCursor(0, 1);
-    lcd.print(TESTS);
-    delay(1000); // TODO: remove
-    // TODO: while (credit[relayIdx] > 0) ...
-    relayOnOff(relayIdx, false);
-    // TODO: credit[relayIdx] = 0;
-    lcd.setCursor(0, 1);
-    lcd.print(TESTF);
-  }
-
   void relayOnOff(int relayIdx, bool on)
   {
 #ifdef DEBUG
@@ -132,6 +130,36 @@ public:
     Serial.println(str);
 #endif
     digitalWrite(relaysPins[relayIdx], on ? HIGH : LOW); 
+  }
+  
+  void test(int relayIdx)
+  {
+    // TODO: credit[relayIdx] = 30; ?
+    relayOnOff(relayIdx, true);
+    lcd.setCursor(0, 1);
+    lcd.print(TESTS);
+    delay(10000);
+    // TODO: while (credit[relayIdx] > 0) ...
+    relayOnOff(relayIdx, false);
+    // TODO: credit[relayIdx] = 0;
+    lcd.setCursor(0, 1);
+    lcd.print(TESTF);
+  }
+
+  void printTotal(unsigned long total)
+  {
+    lcd.setCursor(0, 1);
+    lcd.print(Cash);
+    long a = total / 10000;
+    int a1 = a / 100;
+    int a2 = a % 100;
+    long b = total % 10000;
+    int b1 = b / 100;
+    int b2 = b % 100;
+    String msg = /*String(a1 / 10) + */String(a1 % 10) + String(a2 / 10) + String(a2 % 10) + 
+      String(b1 / 10) + String(b1 % 10) + "." + String(b2 / 10) + String(b2 % 10);
+    lcd.print(msg);
+    lcd.print(BGN);
   }
 
 };

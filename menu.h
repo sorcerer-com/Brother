@@ -63,7 +63,7 @@ void checkMenu(Context& context)
 
 void selectMenu(Context& context)
 {
-  if (context.menuIndex == 1)                                 // VT code
+  if (context.menuIndex == 1)                                   // VT code
   {
 #ifdef DEBUG
     String str = String("VT CODE ") + CODE;
@@ -73,7 +73,7 @@ void selectMenu(Context& context)
     context.lcd.print(CODE);
     waitEsc(context);
   } 
-  else if (context.menuIndex >= 2 && context.menuIndex <= 6)  // Button 1/2/3/4/5 Activ?
+  else if (context.menuIndex >= 2 && context.menuIndex <= 6)    // Button 1/2/3/4/5 Activ?
   {
     int btnIdx = context.menuIndex - 2;
     context.buttonsEnabled[btnIdx] = enableDisable(context, context.buttonsEnabled[btnIdx]);
@@ -84,15 +84,48 @@ void selectMenu(Context& context)
     Serial.println(str);
 #endif
   }
-  else if (context.menuIndex >= 7 && context.menuIndex <= 11) // Test Relay 1/2/3/4/5
+  else if (context.menuIndex >= 7 && context.menuIndex <= 11)   // Test Relay 1/2/3/4/5
   {
     int relayIdx = context.menuIndex - 7;
 #ifdef DEBUG
-    String str = String("Test Relay ") + String(relayIdx);
+    String str = String("Test Relay") + String(relayIdx);
     Serial.println(str);
 #endif
     // TODO: if (WORK != relayIdx) ?
     context.test(relayIdx);
+    waitEsc(context);
+  }
+  else if (context.menuIndex >= 12 && context.menuIndex <= 16) // Sale Channel 1/2/3/4/5
+  {
+    int totalIdx = context.menuIndex - 12;
+    unsigned long total = context.totals[totalIdx];
+#ifdef DEBUG
+    String str = String("Print Total") + String(totalIdx) + ": " + String(total);
+    Serial.println(str);
+#endif
+    context.printTotal(totalIdx);
+    waitEsc(context);
+  }
+  else if (context.menuIndex == 17) // Sale All
+  {
+    unsigned long total = 0;
+    for (int i = 0; i < context.buttonsCount; i++)
+      total += context.totals[i];
+#ifdef DEBUG
+    String str = String("Print Total: ") + String(total);
+    Serial.println(str);
+#endif
+    context.printTotal(total);
+    waitEsc(context);
+  }
+  else if (context.menuIndex == 18) // Total counter
+  {
+    unsigned long total = context.totals[context.buttonsCount];
+#ifdef DEBUG
+    String str = String("Print Total Counter: ") + String(total);
+    Serial.println(str);
+#endif
+    context.printTotal(total);
     waitEsc(context);
   }
 }
