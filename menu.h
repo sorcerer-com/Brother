@@ -118,7 +118,7 @@ void selectMenu(Context& context)
     context.printTotal(total);
     waitEsc(context);
   }
-  else if (context.menuIndex == 18) // Total counter
+  else if (context.menuIndex == 18)                             // Total counter
   {
     unsigned long total = context.totals[context.buttonsCount];
 #ifdef DEBUG
@@ -127,6 +127,34 @@ void selectMenu(Context& context)
 #endif
     context.printTotal(total);
     waitEsc(context);
+  }
+  else if (context.menuIndex >= 19 && context.menuIndex <= 23) // Clear STAT CH1/2/3/4/5
+  {
+    int totalIdx = context.menuIndex - 19;
+    context.totals[totalIdx] = 0;
+    context.writeToEEPROM(context.eeprom.totals[totalIdx], context.totals[totalIdx]);
+    context.lcd.setCursor(0, 1);
+    context.lcd.print(CLEAR);
+    waitEsc(context);
+#ifdef DEBUG
+    String str = String("Clear Total") + String(totalIdx);
+    Serial.println(str);
+#endif
+  }
+  else if (context.menuIndex == 24)                           // Clear All STAT
+  {
+    for (int i = 0; i < context.buttonsCount; i++)
+    {
+      context.totals[i] = 0;
+      context.writeToEEPROM(context.eeprom.totals[i], context.totals[i]);
+    }
+    context.lcd.setCursor(0, 1);
+    context.lcd.print(CLEAR);
+    waitEsc(context);
+#ifdef DEBUG
+    String str = String("Clear All Totals");
+    Serial.println(str);
+#endif
   }
 }
 
@@ -166,8 +194,8 @@ bool enableDisable(const Context& context, bool newValue)
   
 void waitEsc(const Context& context)
 {
-  while (digitalRead(context.buttonsPins[2]) == HIGH) delay(100);// { delay(100); Serial.println("HIGH"); } // wait to press Exit
-  while (digitalRead(context.buttonsPins[2]) == LOW) delay(100);// { delay(100); Serial.println("LOW"); } // wait to release Exit
+  while (digitalRead(context.buttonsPins[2]) == HIGH) delay(100); // wait to press Exit
+  while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release Exit
 }
 
 #endif // MENU_H

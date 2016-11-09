@@ -9,13 +9,14 @@ const char Welcome[]          = "   EASY WASH    ";
 
 const char BGN[]              = "LV";
 
-const char TESTS[]            = "Test started    ";
-const char TESTF[]            = "Test finished   ";
+const char TESTS[]            = "Test started";
+const char TESTF[]            = "Test finished";
+const char CLEAR[]            = "Cleared";
 
 const char Cash[]             = "Cash: ";
 
-const char Enabled[]          = "Enabled         ";
-const char Disabled[]         = "Disabled        ";
+const char Enabled[]          = "Enabled";
+const char Disabled[]         = "Disabled";
 const char EN[]               = "    Enable?     ";
 const char DIS[]              = "    Disable?    ";
 

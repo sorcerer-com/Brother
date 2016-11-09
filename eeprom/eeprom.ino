@@ -31,6 +31,10 @@ void setup() {
     Serial.write("\n");
   }
 
+  // clear EEPROM
+  //Serial.write("\nClear EEPROM\n");
+  //for (int i = 0; i < EEPROM.length(); i++)
+  //  EEPROM.write(i, 0xff);
 }
 
 void loop() {
