@@ -156,6 +156,15 @@ void selectMenu(Context& context)
     Serial.println(str);
 #endif
   }
+  else if (context.menuIndex == 25)                           // Set coin table
+  {
+#ifdef DEBUG
+    String str = String("Set Coin Table");
+    Serial.println(str);
+#endif
+    context.setCoinTable();
+    waitEsc(context);
+  }
 }
 
 bool enableDisable(const Context& context, bool newValue)

@@ -5,25 +5,22 @@ void setup() {
 
   String str = String(EEPROM.length()) + "\n";
   Serial.write(str.c_str());
-
-  int dim = sqrt(EEPROM.length());
   
   Serial.write("    ");
-  for (int i = 0; i < dim; i++)
+  for (int i = 0; i < 0x10; i++)
   {
-    str = String(i, HEX) + " ";
-    if (i < 0x10) str = "0" + str;
+    str = String("0") + String(i, HEX) + " ";
     Serial.write(str.c_str());
   }
   Serial.write("\n\n");
   
-  for (int i = 0; i < dim; i++)
+  for (int i = 0; i < EEPROM.length() / 0x10; i++)
   {
-    str = String(i, HEX) + (i < 0x10 ? "0  " : "  ");
+    str = (i < 0x10 ? "0" : "") + String(i, HEX) + "0 ";
     Serial.write(str.c_str());
-    for (int j = 0; j < dim; j++)
+    for (int j = 0; j < 0x10; j++)
     {
-      int value = EEPROM[i * dim + j];
+      int value = EEPROM[i * 0x10 + j];
       str = String(value, HEX) + " ";
       if (value < 0x10) str = "0" + str;
       Serial.write(str.c_str());

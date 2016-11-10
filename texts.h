@@ -15,6 +15,9 @@ const char CLEAR[]            = "Cleared";
 
 const char Cash[]             = "Cash: ";
 
+const char Insert[]           = "Insert coin: ";
+const char Save[]             = "Settings saved  ";
+
 const char Enabled[]          = "Enabled";
 const char Disabled[]         = "Disabled";
 const char EN[]               = "    Enable?     ";

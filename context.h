@@ -21,12 +21,14 @@ public:
 
   const struct
   {
-    const int buttonsEnabled[5] = { 0x00, 0x01, 0x02, 0x03, 0x04 };
-    const int totals[6] = { 0x06, 0x0B, 0x10, 0x15, 0x1A, 0x1F };
+    const int buttonsEnabled[5] = { 0x00, 0x01, 0x02, 0x03, 0x04 }; // 1 byte
+    const int totals[6] = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 }; // 4 byte
+    const int coinTable[3] = { 0x06, 0x07, 0x08 }; // 1 byte
   } eeprom;
 
-  bool buttonsEnabled[5] = { true, true, true, true, true}; // 1 byte
-  unsigned long totals[6] = { 0, 0, 0, 0, 0, 0 }; // 4 byte, last value is total counter
+  bool buttonsEnabled[5] = { true, true, true, true, true};
+  unsigned long totals[6] = { 0, 0, 0, 0, 0, 0 }; // last value is total counter
+  byte coinTable[3] = { 0, 0, 0 };
   
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
@@ -106,12 +108,21 @@ public:
 #endif
     }
     
-    for (int i = 0; i <= buttonsCount; i++)
+    for (int i = 0; i <= buttonsCount; i++) // last value is total counter
     {
       if (EEPROM[eeprom.totals[i]] != 0xff)
         EEPROM.get(eeprom.totals[i], totals[i]);
 #ifdef DEBUG
       Serial.println("Read Total" + String(i + 1) + ": " + String(totals[i]));
+#endif
+    }
+    
+    for (int i = 0; i < 3; i++)
+    {
+      if (EEPROM[eeprom.coinTable[i]] != 0xff)
+        EEPROM.get(eeprom.coinTable[i], coinTable[i]);
+#ifdef DEBUG
+      Serial.println("Read Total" + String(i + 1) + ": " + String(coinTable[i]));
 #endif
     }
   }
@@ -160,6 +171,22 @@ public:
       String(b1 / 10) + String(b1 % 10) + "." + String(b2 / 10) + String(b2 % 10);
     lcd.print(msg);
     lcd.print(BGN);
+  }
+
+  void setCoinTable()
+  {
+    for (int i = 0; i < 3; i++)
+    {
+      lcd.setCursor(0, 1);
+      lcd.print(Insert);
+      String msg = String("TK") + String(i + 1);
+      lcd.print(msg);
+      // TODO: wait to insert coin
+      delay(1000); // TODO: remove
+      writeToEEPROM(eeprom.coinTable[i], coinTable[i]);
+    }
+    lcd.setCursor(0, 1);
+    lcd.print(Save);
   }
 
 };
