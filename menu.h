@@ -51,7 +51,7 @@ void checkMenu(Context& context)
     {
 #ifdef DEBUG
       String str = "Select Menu " + String(context.menuIndex);
-      Serial.println(str.c_str());
+      Serial.println(str);
 #endif
       while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
       selectMenu(context);
@@ -67,7 +67,7 @@ void selectMenu(Context& context)
   {
 #ifdef DEBUG
     String str = String("VT CODE ") + CODE;
-    Serial.println(str.c_str());
+    Serial.println(str);
 #endif
     context.lcd.setCursor(0, 1);
     context.lcd.print(CODE);
@@ -88,7 +88,7 @@ void selectMenu(Context& context)
   {
     int relayIdx = context.menuIndex - 7;
 #ifdef DEBUG
-    String str = String("Test Relay") + String(relayIdx);
+    String str = String("Test Relay ") + String(relayIdx);
     Serial.println(str);
 #endif
     // TODO: if (WORK != relayIdx) ?
@@ -100,7 +100,7 @@ void selectMenu(Context& context)
     int totalIdx = context.menuIndex - 12;
     unsigned long total = context.totals[totalIdx];
 #ifdef DEBUG
-    String str = String("Print Total") + String(totalIdx) + ": " + String(total);
+    String str = String("Print Total ") + String(totalIdx) + ": " + String(total);
     Serial.println(str);
 #endif
     context.printTotal(totalIdx);
@@ -137,11 +137,11 @@ void selectMenu(Context& context)
     context.lcd.print(CLEAR);
     waitEsc(context);
 #ifdef DEBUG
-    String str = String("Clear Total") + String(totalIdx);
+    String str = String("Clear Total ") + String(totalIdx);
     Serial.println(str);
 #endif
   }
-  else if (context.menuIndex == 24)                           // Clear All STAT
+  else if (context.menuIndex == 24)                             // Clear All STAT
   {
     for (int i = 0; i < context.buttonsCount; i++)
     {
@@ -156,7 +156,7 @@ void selectMenu(Context& context)
     Serial.println(str);
 #endif
   }
-  else if (context.menuIndex == 25)                           // Set coin table
+  else if (context.menuIndex == 25)                             // Set coin table
   {
 #ifdef DEBUG
     String str = String("Set Coin Table");
@@ -164,6 +164,15 @@ void selectMenu(Context& context)
 #endif
     context.setCoinTable();
     waitEsc(context);
+  }
+  else if (context.menuIndex >= 26 && context.menuIndex <= 30) // Read credit table 1/2/3/4/5
+  {
+    int tableIdx = context.menuIndex - 26;
+#ifdef DEBUG
+    String str = String("Read Credit Table ") + String(tableIdx);
+    Serial.println(str);
+#endif
+    context.readCreditTable(tableIdx);
   }
 }
 

@@ -7,6 +7,9 @@ const char CODE[] = "16031406";
 
 const char Welcome[]          = "   EASY WASH    ";
 
+const char Credit[]           = "Credit: ";
+const char Time[]             = "Time: ";
+
 const char BGN[]              = "LV";
 
 const char TESTS[]            = "Test started";
