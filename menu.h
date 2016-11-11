@@ -5,7 +5,12 @@
 
 void selectMenu(Context& context);
 bool enableDisable(const Context& context, bool newValue);
+void test(const Context& context, int relayIdx);
+void printTotal(const Context& context, unsigned long total);
+void setCoinTable(const Context& context);
+void readCreditTable(const Context& context, int tableIdx);
 void waitEsc(const Context& context);
+
 
 void checkMenu(Context& context)
 {
@@ -92,7 +97,7 @@ void selectMenu(Context& context)
     Serial.println(str);
 #endif
     // TODO: if (WORK != relayIdx) ?
-    context.test(relayIdx);
+    test(context, relayIdx);
     waitEsc(context);
   }
   else if (context.menuIndex >= 12 && context.menuIndex <= 16) // Sale Channel 1/2/3/4/5
@@ -103,7 +108,7 @@ void selectMenu(Context& context)
     String str = String("Print Total ") + String(totalIdx) + ": " + String(total);
     Serial.println(str);
 #endif
-    context.printTotal(totalIdx);
+    printTotal(context, totalIdx);
     waitEsc(context);
   }
   else if (context.menuIndex == 17) // Sale All
@@ -115,7 +120,7 @@ void selectMenu(Context& context)
     String str = String("Print Total: ") + String(total);
     Serial.println(str);
 #endif
-    context.printTotal(total);
+    printTotal(context, total);
     waitEsc(context);
   }
   else if (context.menuIndex == 18)                             // Total counter
@@ -125,7 +130,7 @@ void selectMenu(Context& context)
     String str = String("Print Total Counter: ") + String(total);
     Serial.println(str);
 #endif
-    context.printTotal(total);
+    printTotal(context, total);
     waitEsc(context);
   }
   else if (context.menuIndex >= 19 && context.menuIndex <= 23) // Clear STAT CH1/2/3/4/5
@@ -162,7 +167,7 @@ void selectMenu(Context& context)
     String str = String("Set Coin Table");
     Serial.println(str);
 #endif
-    context.setCoinTable();
+    setCoinTable(context);
     waitEsc(context);
   }
   else if (context.menuIndex >= 26 && context.menuIndex <= 30) // Read credit table 1/2/3/4/5
@@ -172,9 +177,10 @@ void selectMenu(Context& context)
     String str = String("Read Credit Table ") + String(tableIdx);
     Serial.println(str);
 #endif
-    context.readCreditTable(tableIdx);
+    readCreditTable(context, tableIdx);
   }
 }
+
 
 bool enableDisable(const Context& context, bool newValue)
 {
@@ -209,6 +215,95 @@ bool enableDisable(const Context& context, bool newValue)
 
   return newValue;
 }
+
+void test(const Context& context, int relayIdx)
+{
+  // TODO: credit[relayIdx] = 30; ?
+  context.relayOnOff(relayIdx, true);
+  context.lcd.setCursor(0, 1);
+  context.lcd.print(TESTS);
+  delay(10000);
+  // TODO: while (credit[relayIdx] > 0) ...
+  context.relayOnOff(relayIdx, false);
+  // TODO: credit[relayIdx] = 0;
+  context.lcd.setCursor(0, 1);
+  context.lcd.print(TESTF);
+}
+
+void printTotal(const Context& context, unsigned long total)
+{
+  context.lcd.setCursor(0, 1);
+  context.lcd.print(Cash);
+  long a = total / 10000;
+  int a1 = a / 100;
+  int a2 = a % 100;
+  long b = total % 10000;
+  int b1 = b / 100;
+  int b2 = b % 100;
+  String msg = /*String(a1 / 10) + */String(a1 % 10) + String(a2 / 10) + String(a2 % 10) + 
+    String(b1 / 10) + String(b1 % 10) + "." + String(b2 / 10) + String(b2 % 10);
+  context.lcd.print(msg);
+  context.lcd.print(BGN);
+}
+
+void setCoinTable(const Context& context)
+{
+  for (int i = 0; i < 3; i++)
+  {
+    context.lcd.setCursor(0, 1);
+    context.lcd.print(Insert);
+    String msg = String("TK") + String(i + 1);
+    context.lcd.print(msg);
+    // TODO: wait to insert coin
+    delay(1000); // TODO: remove
+    context.writeToEEPROM(context.eeprom.coinTable[i], context.coinTable[i]);
+  }
+  context.lcd.setCursor(0, 1);
+  context.lcd.print(Save);
+}
+
+void readCreditTable(const Context& context, int tableIdx)
+{
+  int i = 0;
+  while(true)
+  {
+    int idx = tableIdx * 5 + i;
+    context.lcd.clear();
+    context.lcd.setCursor(0, 0);
+    context.lcd.print(String(i + 1));
+    context.lcd.print(Credit);
+    int a = context.creditTables[idx].credit / 100;
+    int b = context.creditTables[idx].credit % 100;
+    String msg = String(a / 10) + String(a % 10) + "." + String(b / 10) + String(b % 10) + " " + BGN;
+    context.lcd.print(msg);
+    context.lcd.setCursor(0, 1);
+    context.lcd.print(Time);
+    msg = String(context.creditTables[idx].hour / 10) + String(context.creditTables[idx].hour % 10) + ":" + 
+      String(context.creditTables[idx].min / 10) + String(context.creditTables[idx].min % 10) + ":" + 
+      String(context.creditTables[idx].sec / 10) + String(context.creditTables[idx].sec % 10);
+    context.lcd.print(msg);
+
+    delay(100);
+    if (digitalRead(context.buttonsPins[0]) == LOW) // down pressed
+    {
+      while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
+      i++;
+      if (i > 4) i = 0;
+    }
+    if (digitalRead(context.buttonsPins[1]) == LOW) // up pressed
+    {
+      while (digitalRead(context.buttonsPins[1]) == LOW) delay(100); // wait to release the button
+      i--;
+      if (i < 0) i = 4;
+    }
+    if (digitalRead(context.buttonsPins[2]) == LOW) // exit pressed
+    {
+      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
+      break;
+    }
+  }
+}
+
   
 void waitEsc(const Context& context)
 {
