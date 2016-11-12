@@ -14,22 +14,22 @@
 class Context
 {
 public:
-  const int menuButtonPin = 2;
-  const int buttonsCount = 5;
-  const int buttonsPins[5] = { 3, 4, 5, 6, 7 };
-  const int relaysPins[5] = { 8, 9, 10, 11, 12 };
+  const int menuButtonPin   = 2;
+  const int buttonsCount    = 5;
+  const int buttonsPins[5]  = { 3, 4, 5, 6, 7 };
+  const int relaysPins[5]   = { 8, 9, 10, 11, 12 };
 
   const struct
   {
     const int buttonsEnabled[5] = { 0x00, 0x01, 0x02, 0x03, 0x04 }; // 1 byte
-    const int totals[6] = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 }; // 4 byte
-    const int coinTable[3] = { 0x06, 0x07, 0x08 }; // 1 byte
-    const int creditTables[5] = { 0x25, 0x2B, 0x90, 0x95, 0x9B }; // 2 + 3 * 1 = 5 byte 
+    const int totals[6]         = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 }; // 4 byte
+    const int coinTable[3]      = { 0x06, 0x07, 0x08 }; // 1 byte
+    const int creditTables[5]   = { 0x25, 0x2B, 0x90, 0x95, 0x9B }; // 2 + 3 * 1 = 5 byte 
   } eeprom;
 
-  bool buttonsEnabled[5] = { true, true, true, true, true};
+  bool buttonsEnabled[5]  = { true, true, true, true, true};
   unsigned long totals[6] = { 0, 0, 0, 0, 0, 0 }; // last value is total counter
-  byte coinTable[3] = { 0, 0, 0 };
+  byte coinTable[3]       = { 0, 0, 0 };
   struct
   {
     int credit = 0;
@@ -151,7 +151,7 @@ public:
           adr +=  sizeof(creditTables[idx].min);
           EEPROM.get(adr, creditTables[idx].sec);
 #ifdef DEBUG
-        Serial.print(String(creditTables[idx].credit) + " " + String(creditTables[idx].hour) + ":" + String(creditTables[idx].min) + ":" + String(creditTables[idx].sec));
+        Serial.print(" " + String(creditTables[idx].credit) + " " + String(creditTables[idx].hour) + ":" + String(creditTables[idx].min) + ":" + String(creditTables[idx].sec));
 #endif
         }
       }

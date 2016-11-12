@@ -26,6 +26,8 @@ const char Disabled[]         = "Disabled";
 const char EN[]               = "    Enable?     ";
 const char DIS[]              = "    Disable?    ";
 
+const char Cont[]             = "Continue?";
+
 const char Ready_cyr[]        = " PUSNETE JETON  ";
 
 const char menu_00[] PROGMEM  = "----- MENU -----";
