@@ -34,7 +34,7 @@ public:
   {
     int credit = 0;
     byte hour = 0, min = 0, sec = 0;
-  } creditTables[5*5];
+  } creditTables[5 * 5];
   
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
@@ -142,10 +142,14 @@ public:
         for (int j = 0; j < 5; j++)
         {
           int idx = i * 5 + j;
-          EEPROM.get(eeprom.creditTables[i] + j * 0x10, creditTables[idx].credit);
-          EEPROM.get(eeprom.creditTables[i] + sizeof(creditTables[idx].credit) + j * 0x10, creditTables[idx].hour);
-          EEPROM.get(eeprom.creditTables[i] + sizeof(creditTables[idx].hour) + j * 0x10, creditTables[idx].min);
-          EEPROM.get(eeprom.creditTables[i] + sizeof(creditTables[idx].min) + j * 0x10, creditTables[idx].sec);
+          int adr = eeprom.creditTables[i] + j * 0x10;
+          EEPROM.get(adr, creditTables[idx].credit);
+          adr += sizeof(creditTables[idx].credit);
+          EEPROM.get(adr, creditTables[idx].hour);
+          adr +=  sizeof(creditTables[idx].hour);
+          EEPROM.get(adr, creditTables[idx].min);
+          adr +=  sizeof(creditTables[idx].min);
+          EEPROM.get(adr, creditTables[idx].sec);
 #ifdef DEBUG
         Serial.print(String(creditTables[idx].credit) + " " + String(creditTables[idx].hour) + ":" + String(creditTables[idx].min) + ":" + String(creditTables[idx].sec));
 #endif
@@ -171,6 +175,23 @@ public:
     Serial.println(str);
 #endif
     digitalWrite(relaysPins[relayIdx], on ? HIGH : LOW); 
+  }
+
+
+  void printCredit(int credit)
+  {
+    int a = credit / 100;
+    int b = credit % 100;
+    String msg = String(a / 10) + String(a % 10) + "." + String(b / 10) + String(b % 10) + " " + BGN;
+    lcd.print(msg);
+  }
+
+  void printTime(byte hour, byte min, byte sec)
+  {
+    String msg = String(hour / 10) + String(hour % 10) + ":" + 
+      String(min / 10) + String(min % 10) + ":" + 
+      String(sec / 10) + String(sec % 10);
+    lcd.print(msg);
   }
   
 };

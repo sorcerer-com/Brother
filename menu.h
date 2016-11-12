@@ -9,56 +9,53 @@ void test(const Context& context, int relayIdx);
 void printTotal(const Context& context, unsigned long total);
 void setCoinTable(const Context& context);
 void readCreditTable(const Context& context, int tableIdx);
+void setCreditTable(Context& context, int tableIdx);
+bool buttonPressed(const Context& context, int idx);
 void waitEsc(const Context& context);
 
 
 void checkMenu(Context& context)
 {
-  if (context.menuIndex == -1 && digitalRead(context.menuButtonPin) == LOW) // open menu
+  if (context.menuIndex == -1 && buttonPressed(context, -1)) // enter pressed - open menu
   {
 #ifdef DEBUG
     Serial.println("Open Menu");
 #endif
-    while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
     context.menuIndex = 0;
     context.refreshDisplay();
   }
   
   if (context.menuIndex != -1) // menu is opened
   {
-    if (digitalRead(context.buttonsPins[0]) == LOW) // down pressed
+    if (buttonPressed(context, 0)) // down pressed
     {
 #ifdef DEBUG
       Serial.println("Down Menu");
 #endif
-      while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
       context.menuIndex++;
       if (context.menuIndex > MenuCount) context.menuIndex = 0;
     }
-    if (digitalRead(context.buttonsPins[1]) == LOW) // up pressed
+    if (buttonPressed(context, 1)) // up pressed
     {
 #ifdef DEBUG
       Serial.println("Up Menu");
 #endif
-      while (digitalRead(context.buttonsPins[1]) == LOW) delay(100); // wait to release the button
       context.menuIndex--;
       if (context.menuIndex < 0) context.menuIndex = MenuCount - 1;
     }
-    if (digitalRead(context.buttonsPins[2]) == LOW) // exit pressed
+    if (buttonPressed(context, 2)) // exit pressed
     {
 #ifdef DEBUG
       Serial.println("Exit Menu");
 #endif
-      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
       context.menuIndex = -1;
     }
-    if (digitalRead(context.menuButtonPin) == LOW) // enter pressed
+    if (buttonPressed(context, -1)) // enter pressed
     {
 #ifdef DEBUG
       String str = "Select Menu " + String(context.menuIndex);
       Serial.println(str);
 #endif
-      while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
       selectMenu(context);
     }
     else
@@ -192,9 +189,8 @@ bool enableDisable(const Context& context, bool newValue)
 
   for (int i = 0; i < 30*100; i++)
   {
-    if (digitalRead(context.menuButtonPin) == LOW) // enter pressed
+    if (buttonPressed(context, -1)) // enter pressed
     {
-      while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release the button
       newValue = !newValue;
       context.lcd.setCursor(0, 1);
       if (newValue)
@@ -204,9 +200,8 @@ bool enableDisable(const Context& context, bool newValue)
       delay(100);
       break;
     }
-    if (digitalRead(context.buttonsPins[2]) == LOW) // exit pressed
+    if (buttonPressed(context, 2)) // exit pressed
     {
-      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
       break;
     }
 
@@ -223,9 +218,9 @@ void test(const Context& context, int relayIdx)
   context.lcd.setCursor(0, 1);
   context.lcd.print(TESTS);
   delay(10000);
-  // TODO: while (credit[relayIdx] > 0) ...
+  // TODO: while (credit[relayIdx] > 0) ... ?
   context.relayOnOff(relayIdx, false);
-  // TODO: credit[relayIdx] = 0;
+  // TODO: credit[relayIdx] = 0; ?
   context.lcd.setCursor(0, 1);
   context.lcd.print(TESTF);
 }
@@ -270,41 +265,44 @@ void readCreditTable(const Context& context, int tableIdx)
     int idx = tableIdx * 5 + i;
     context.lcd.clear();
     context.lcd.setCursor(0, 0);
-    context.lcd.print(String(i + 1));
     context.lcd.print(Credit);
-    int a = context.creditTables[idx].credit / 100;
-    int b = context.creditTables[idx].credit % 100;
-    String msg = String(a / 10) + String(a % 10) + "." + String(b / 10) + String(b % 10) + " " + BGN;
-    context.lcd.print(msg);
+    context.printCredit(context.creditTables[idx].credit);
     context.lcd.setCursor(0, 1);
     context.lcd.print(Time);
-    msg = String(context.creditTables[idx].hour / 10) + String(context.creditTables[idx].hour % 10) + ":" + 
-      String(context.creditTables[idx].min / 10) + String(context.creditTables[idx].min % 10) + ":" + 
-      String(context.creditTables[idx].sec / 10) + String(context.creditTables[idx].sec % 10);
-    context.lcd.print(msg);
+    context.printTime(context.creditTables[idx].hour, context.creditTables[idx].min, context.creditTables[idx].sec);
 
-    delay(100);
-    if (digitalRead(context.buttonsPins[0]) == LOW) // down pressed
+    if (buttonPressed(context, 0)) // down pressed
     {
-      while (digitalRead(context.buttonsPins[0]) == LOW) delay(100); // wait to release the button
       i++;
       if (i > 4) i = 0;
     }
-    if (digitalRead(context.buttonsPins[1]) == LOW) // up pressed
+    if (buttonPressed(context, 1)) // up pressed
     {
-      while (digitalRead(context.buttonsPins[1]) == LOW) delay(100); // wait to release the button
       i--;
       if (i < 0) i = 4;
     }
-    if (digitalRead(context.buttonsPins[2]) == LOW) // exit pressed
-    {
-      while (digitalRead(context.buttonsPins[2]) == LOW) delay(100); // wait to release the button
+    if (buttonPressed(context, 2)) // exit pressed
       break;
+    delay(100);
+  }
+}
+
     }
   }
 }
 
-  
+
+bool buttonPressed(const Context& context, int idx)
+{
+  int buttonPin = (idx < 0 || idx >= context.buttonsCount) ? context.menuButtonPin : context.buttonsPins[idx];
+  if (digitalRead(buttonPin) == LOW) // button pressed
+  {
+    while (digitalRead(buttonPin) == LOW) delay(100); // wait to release the button
+    return true;
+  }
+  return false;
+}
+
 void waitEsc(const Context& context)
 {
   while (digitalRead(context.buttonsPins[2]) == HIGH) delay(100); // wait to press Exit
