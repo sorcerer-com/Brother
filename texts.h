@@ -12,21 +12,21 @@ const char Time[]             = "Time: ";
 
 const char BGN[]              = "LV";
 
-const char TESTS[]            = "Test started";
-const char TESTF[]            = "Test finished";
-const char CLEAR[]            = "Cleared";
+const char TESTS[]            = "Test started    ";
+const char TESTF[]            = "Test finished   ";
+const char CLEAR[]            = "Cleared         ";
 
 const char Cash[]             = "Cash: ";
 
 const char Insert[]           = "Insert coin: ";
 const char Save[]             = "Settings saved  ";
 
-const char Enabled[]          = "Enabled";
-const char Disabled[]         = "Disabled";
+const char Enabled[]          = "Enabled         ";
+const char Disabled[]         = "Disabled        ";
 const char EN[]               = "    Enable?     ";
 const char DIS[]              = "    Disable?    ";
 
-const char Cont[]             = "Continue?";
+const char Cont[]             = "Continue?       ";
 
 const char Ready_cyr[]        = " PUSNETE JETON  ";
 
@@ -66,16 +66,15 @@ const char menu_32[] PROGMEM  = "Set vodostrukia ";
 const char menu_33[] PROGMEM  = "Set parostrukia ";
 const char menu_34[] PROGMEM  = "Set chetka      ";
 const char menu_35[] PROGMEM  = "Set pqna        ";
-const char menu_36[] PROGMEM  = "Start settings  ";
-const char menu_37[] PROGMEM  = "AUTOSTART value ";
-const char menu_38[] PROGMEM  = "Clear credit    ";
+const char menu_36[] PROGMEM  = "AUTOSTART value ";
+const char menu_37[] PROGMEM  = "Clear credit    ";
 
 const int MenuCount = 38;
 const char* const menu[] PROGMEM = 
 	{ menu_00, menu_01, menu_02, menu_03, menu_04, menu_05, menu_06, menu_07, menu_08, menu_09,
 	  menu_10, menu_11, menu_12, menu_13, menu_14, menu_15, menu_16, menu_17, menu_18, menu_19,
 	  menu_20, menu_21, menu_22, menu_23, menu_24, menu_25, menu_26, menu_27, menu_28, menu_29,
-	  menu_30, menu_31, menu_32, menu_33, menu_34, menu_35, menu_36, menu_37, menu_38 };
+	  menu_30, menu_31, menu_32, menu_33, menu_34, menu_35, menu_36, menu_37 };
 
 
 char buffer[20];

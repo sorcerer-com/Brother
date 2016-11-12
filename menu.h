@@ -10,6 +10,7 @@ void printTotal(const Context& context, unsigned long total);
 void setCoinTable(const Context& context);
 void readCreditTable(const Context& context, int tableIdx);
 void setCreditTable(Context& context, int tableIdx);
+void setAutostartValue(Context& context);
 bool buttonPressed(const Context& context, int idx);
 void waitEsc(const Context& context);
 
@@ -33,7 +34,7 @@ void checkMenu(Context& context)
       Serial.println("Up Menu");
 #endif
       context.menuIndex++;
-      if (context.menuIndex > MenuCount) context.menuIndex = 0;
+      if (context.menuIndex >= MenuCount) context.menuIndex = 0;
     }
     if (buttonPressed(context, 1)) // down pressed
     {
@@ -185,6 +186,14 @@ void selectMenu(Context& context)
 #endif
     setCreditTable(context, tableIdx);
   }
+  else if (context.menuIndex == 36)                             // AUTOSTART value
+  {
+#ifdef DEBUG
+    String str = String("Set Autostart value");
+    Serial.println(str);
+#endif
+    setAutostartValue(context);
+  }
 }
 
 
@@ -206,15 +215,13 @@ bool enableDisable(const Context& context, bool newValue)
         context.lcd.print(Enabled);
       else
         context.lcd.print(Disabled);
-      delay(100);
+      delay(500);
       break;
     }
     if (buttonPressed(context, 2)) // exit pressed
-    {
       break;
-    }
 
-    delay(10);
+    delay(100);
   }
 
   return newValue;
@@ -226,7 +233,7 @@ void test(const Context& context, int relayIdx)
   context.relayOnOff(relayIdx, true);
   context.lcd.setCursor(0, 1);
   context.lcd.print(TESTS);
-  delay(10000);
+  delay(3000);
   // TODO: while (credit[relayIdx] > 0) ... ?
   context.relayOnOff(relayIdx, false);
   // TODO: credit[relayIdx] = 0; ?
@@ -414,6 +421,44 @@ void setCreditTable(Context& context, int tableIdx)
   }
 }
 
+void setAutostartValue(Context& context)
+{
+  bool change = true;
+  while(true)
+  {
+    if (change)
+    {
+      change = false;
+      context.lcd.setCursor(0, 1);
+      context.lcd.print(Time);
+      byte min = context.autostartValue / 60;
+      byte sec = context.autostartValue % 60;
+      context.printTime(0, min, sec);
+    }
+    if (buttonPressed(context, 0)) // up pressed
+    {
+      change = true;
+      if (context.autostartValue < 240)
+        context.autostartValue++;
+    }
+    if (buttonPressed(context, 1)) // down pressed
+    {
+      change = true;
+      if (context.autostartValue > 0)
+        context.autostartValue--;
+    }
+    if (buttonPressed(context, -1)) // enter pressed
+    {
+      context.writeToEEPROM(context.eeprom.autostartValue, context.autostartValue);
+      context.lcd.setCursor(0, 1);
+      context.lcd.print(Save);
+      waitEsc(context);
+      break;
+    }
+    if (buttonPressed(context, 2)) // exit pressed
+      break;
+  }
+}
 
 bool buttonPressed(const Context& context, int idx)
 {

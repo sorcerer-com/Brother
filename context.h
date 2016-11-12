@@ -25,6 +25,7 @@ public:
     const int totals[6]         = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 }; // 4 byte
     const int coinTable[3]      = { 0x06, 0x07, 0x08 }; // 1 byte
     const int creditTables[5]   = { 0x25, 0x2B, 0x90, 0x95, 0x9B }; // 2 + 3 * 1 = 5 byte 
+    const int autostartValue    = 0x0A; // 1 byte
   } eeprom;
 
   bool buttonsEnabled[5]  = { true, true, true, true, true};
@@ -35,6 +36,7 @@ public:
     int credit = 0;
     byte hour = 0, min = 0, sec = 0;
   } creditTables[5 * 5];
+  byte autostartValue     = 0;
   
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
@@ -159,6 +161,13 @@ public:
       Serial.println();
 #endif
     }
+    // autostart value
+    if (EEPROM[eeprom.autostartValue] != 0xff)
+      EEPROM.get(eeprom.autostartValue, autostartValue);
+#ifdef DEBUG
+    Serial.println("Read Autostart Value: " + String(autostartValue));
+#endif
+
   }
   
   template< typename T > 
