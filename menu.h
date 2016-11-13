@@ -11,21 +11,38 @@ void setCoinTable(const Context& context);
 void readCreditTable(const Context& context, int tableIdx);
 void setCreditTable(Context& context, int tableIdx);
 void setAutostartValue(Context& context);
-bool buttonPressed(const Context& context, int idx);
+int buttonPressed(const Context& context, int idx);
 void waitEsc(const Context& context);
 
 
 void checkMenu(Context& context)
 {
-  if (context.menuIndex == -1 && buttonPressed(context, -1)) // enter pressed - open menu
+  if (context.menuIndex == -1) // menu is not opened
   {
+    int pressed = buttonPressed(context, -1);
+    if (pressed > 30) // enter pressed for 3 sec - open menu
+    {
 #ifdef DEBUG
-    Serial.println("Open Menu");
+      Serial.println("Open Menu");
 #endif
-    context.menuIndex = 0;
-    context.refreshDisplay();
+      context.menuIndex = 0;
+      context.refreshDisplay();
+    }
+    else if (pressed > 0) // show total
+    {
+      unsigned long total = context.totals[context.buttonsCount];
+#ifdef DEBUG
+      String str = String("Print Total Counter: ") + String(total);
+      Serial.println(str);
+#endif
+      context.lcd.setCursor(0, 0);
+      context.lcd.print(Menu(18));
+      printTotal(context, total);
+      waitEsc(context);
+      context.refreshDisplay();
+    }
   }
-  
+
   if (context.menuIndex != -1) // menu is opened
   {
     if (buttonPressed(context, 0)) // up pressed
@@ -457,15 +474,16 @@ void setAutostartValue(Context& context)
   }
 }
 
-bool buttonPressed(const Context& context, int idx)
+int buttonPressed(const Context& context, int idx)
 {
   int buttonPin = (idx < 0 || idx >= context.buttonsCount) ? context.menuButtonPin : context.buttonsPins[idx];
   if (digitalRead(buttonPin) == LOW) // button pressed
   {
-    while (digitalRead(buttonPin) == LOW) delay(100); // wait to release the button
-    return true;
+    int res = 1;
+    while (digitalRead(buttonPin) == LOW) { delay(100); res++; } // wait to release the button
+    return res;
   }
-  return false;
+  return 0;
 }
 
 void waitEsc(const Context& context)
