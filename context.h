@@ -14,10 +14,10 @@
 class Context
 {
 public:
-  const int menuButtonPin   = 2;
-  const int buttonsCount    = 5;
-  const int buttonsPins[5]  = { 3, 4, 5, 6, 7 };
-  const int relaysPins[5]   = { 8, 9, 10, 11, 12 };
+  const int menuButtonPin     = 2;
+  const int buttonsCount      = 5;
+  const int buttonsPins[5]    = { 3, 4, 5, 6, 7 };
+  const int relaysPins[5][2]  = { { 8, 9 }, { 10, -1 },  { 11, -1 }, { 12, -1 }, { 13, -1 } };
 
   const struct
   {
@@ -66,12 +66,17 @@ public:
     
     for (int i = 0; i < buttonsCount; i++)
     {
+      for (int j = 0; j < 2; j++)
+      {
+        if (relaysPins[i][j] == -1)
+          continue;
   #ifdef DEBUG
-      String str = "Setup relay " + String(i + 1) + " pin: " + String(relaysPins[i]);
-      Serial.println(str);
+        String str = "Setup relay " + String(i + 1) + " pin: " + String(relaysPins[i][j]);
+        Serial.println(str);
   #endif
-      pinMode(relaysPins[i], OUTPUT);
-      digitalWrite(relaysPins[i], LOW);
+        pinMode(relaysPins[i][j], OUTPUT);
+        digitalWrite(relaysPins[i][j], LOW);
+      }
     }
   }
 
@@ -180,10 +185,14 @@ public:
   void relayOnOff(int relayIdx, bool on)
   {
 #ifdef DEBUG
-    String str = String("Relay ") + (on ? "On" : "Off");
+    String str = String("Relay ") + String(relayIdx) + " " + (on ? "On" : "Off");
     Serial.println(str);
 #endif
-    digitalWrite(relaysPins[relayIdx], on ? HIGH : LOW); 
+    for (int i = 0; i < 2; i++)
+    {
+      if (relaysPins[relayIdx][i] != -1)
+        digitalWrite(relaysPins[relayIdx][i], on ? HIGH : LOW);
+    }
   }
 
 

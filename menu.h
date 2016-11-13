@@ -229,14 +229,11 @@ bool enableDisable(const Context& context, bool newValue)
 
 void test(const Context& context, int relayIdx)
 {
-  // TODO: credit[relayIdx] = 30; ?
   context.relayOnOff(relayIdx, true);
   context.lcd.setCursor(0, 1);
   context.lcd.print(TESTS);
   delay(3000);
-  // TODO: while (credit[relayIdx] > 0) ... ?
   context.relayOnOff(relayIdx, false);
-  // TODO: credit[relayIdx] = 0; ?
   context.lcd.setCursor(0, 1);
   context.lcd.print(TESTF);
 }
