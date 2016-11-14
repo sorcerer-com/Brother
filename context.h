@@ -14,29 +14,34 @@
 class Context
 {
 public:
+  // Pin
   const int menuButtonPin     = 2;
   const int buttonsCount      = 5;
   const int buttonsPins[5]    = { 3, 4, 5, 6, 7 };
   const int relaysPins[5][2]  = { { 8, 9 }, { 10, -1 },  { 11, -1 }, { 12, -1 }, { 13, -1 } };
+  const int coinAcceptorPins[6] = { A0, A1, A2, A3, A3, A3 };
 
+  // EEPROM
   const struct
   {
     const int buttonsEnabled[5] = { 0x00, 0x01, 0x02, 0x03, 0x04 }; // 1 byte
     const int totals[6]         = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 }; // 4 byte
-    const int coinTable[3]      = { 0x06, 0x07, 0x08 }; // 1 byte
+    const int coinTable[6]      = { 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B }; // 1 byte
     const int creditTables[5]   = { 0x25, 0x2B, 0x90, 0x95, 0x9B }; // 2 + 3 * 1 = 5 byte 
-    const int autostartValue    = 0x0A; // 1 byte
+    const int autostartValue    = 0x0D; // 1 byte
   } eeprom;
 
+  // Current State
   bool buttonsEnabled[5]  = { true, true, true, true, true};
   unsigned long totals[6] = { 0, 0, 0, 0, 0, 0 }; // last value is total counter
-  byte coinTable[3]       = { 0, 0, 0 };
+  byte coinTable[6]       = { 100, 100, 100, 100, 100, 100 };
   struct
   {
     int credit = 0;
     byte hour = 0, min = 0, sec = 0;
   } creditTables[5 * 5];
   byte autostartValue     = 0;
+
   
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
@@ -50,11 +55,15 @@ public:
   void setupPins() const
   {
   #ifdef DEBUG
+    Serial.begin(9600);
+    
     String str = "Setup main button pin: " + String(menuButtonPin);
     Serial.println(str);
   #endif
+    // Menu/Enter Button Pin
     pinMode(menuButtonPin, INPUT_PULLUP);
-    
+
+    // Buttons Pins
     for (int i = 0; i < buttonsCount; i++)
     {
   #ifdef DEBUG
@@ -63,7 +72,8 @@ public:
   #endif
       pinMode(buttonsPins[i], INPUT_PULLUP);
     }
-    
+
+    // Relays Pins
     for (int i = 0; i < buttonsCount; i++)
     {
       for (int j = 0; j < 2; j++)
@@ -77,6 +87,16 @@ public:
         pinMode(relaysPins[i][j], OUTPUT);
         digitalWrite(relaysPins[i][j], LOW);
       }
+    }
+
+    // Coin Acceptor Pins
+    for (int i = 0; i < 6; i++)
+    {
+  #ifdef DEBUG
+      String str = "Setup coin acceptor " + String(i + 1) + " pin: " + String(coinAcceptorPins[i]);
+      Serial.println(str);
+  #endif
+      pinMode(coinAcceptorPins[i], INPUT_PULLUP);
     }
   }
 
@@ -130,7 +150,7 @@ public:
 #endif
     }
     // coint table
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 6; i++)
     {
       if (EEPROM[eeprom.coinTable[i]] != 0xff)
         EEPROM.get(eeprom.coinTable[i], coinTable[i]);
@@ -193,6 +213,32 @@ public:
       if (relaysPins[relayIdx][i] != -1)
         digitalWrite(relaysPins[relayIdx][i], on ? HIGH : LOW);
     }
+  }
+
+  int checkForCoin()
+  {
+    for (int i = 0; i < 6; i++)
+    {
+      if (digitalRead(coinAcceptorPins[i]) == LOW)
+      {
+        bool res = true;
+        for (int j = 0; j < 3; j++) // check for consistent signal
+        {
+          delay(10);
+          if (digitalRead(coinAcceptorPins[i]) != LOW)
+          {
+            res = false;
+            break;
+          }
+        }
+        if (res)
+        {
+          while (digitalRead(coinAcceptorPins[i]) == LOW) delay(10); // wait for signals end
+          return i;
+        }
+      }
+    }
+    return -1;
   }
 
 

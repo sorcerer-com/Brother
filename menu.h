@@ -7,7 +7,7 @@ void selectMenu(Context& context);
 bool enableDisable(const Context& context, bool newValue);
 void test(const Context& context, int relayIdx);
 void printTotal(const Context& context, unsigned long total);
-void setCoinTable(const Context& context);
+void setCoinTable(Context& context);
 void readCreditTable(const Context& context, int tableIdx);
 void setCreditTable(Context& context, int tableIdx);
 void setAutostartValue(Context& context);
@@ -20,7 +20,7 @@ void checkMenu(Context& context)
   if (context.menuIndex == -1) // menu is not opened
   {
     int pressed = buttonPressed(context, -1);
-    if (pressed > 30) // enter pressed for 3 sec - open menu
+    if (pressed > /* TODO: 3 */0) // enter pressed for 3 sec - open menu
     {
 #ifdef DEBUG
       Serial.println("Open Menu");
@@ -98,7 +98,6 @@ void selectMenu(Context& context)
     int btnIdx = context.menuIndex - 2;
     context.buttonsEnabled[btnIdx] = enableDisable(context, context.buttonsEnabled[btnIdx]);
     context.writeToEEPROM(context.eeprom.buttonsEnabled[btnIdx], context.buttonsEnabled[btnIdx]);
-    // TODO: if(vEN3 && (cred3 != 0)) rem3 = 1; ?
 #ifdef DEBUG
     String str = String(context.buttonsEnabled[btnIdx] ? "Enable" : "Disable") + " Button " + String(btnIdx);
     Serial.println(str);
@@ -111,7 +110,6 @@ void selectMenu(Context& context)
     String str = String("Test Relay ") + String(relayIdx);
     Serial.println(str);
 #endif
-    // TODO: if (WORK != relayIdx) ?
     test(context, relayIdx);
     waitEsc(context);
   }
@@ -271,17 +269,26 @@ void printTotal(const Context& context, unsigned long total)
   context.lcd.print(BGN);
 }
 
-void setCoinTable(const Context& context)
+void setCoinTable(Context& context)
 {
-  for (int i = 0; i < 3; i++)
+  for (int i = 0; i < 6; i++)
   {
     context.lcd.setCursor(0, 1);
     context.lcd.print(Insert);
     String msg = String("TK") + String(i + 1);
     context.lcd.print(msg);
-    // TODO: wait to insert coin
-    delay(1000); // TODO: remove
-    context.writeToEEPROM(context.eeprom.coinTable[i], context.coinTable[i]);
+    int coin = -1;
+    while(coin == -1)
+    {
+      coin = context.checkForCoin();
+      delay(10);
+    }
+#ifdef DEBUG
+    String str = String("Coin ") + String(coin) + " Inserted";
+    Serial.println(str);
+#endif
+    context.coinTable[i] = 100;
+    context.writeToEEPROM(context.eeprom.coinTable[coin], context.coinTable[coin]);
   }
   context.lcd.setCursor(0, 1);
   context.lcd.print(Save);

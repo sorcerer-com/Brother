@@ -5,8 +5,6 @@ Context context;
 /*-----( SETUP: RUNS ONCE )-----*/
 void setup()
 {
-  Serial.begin(9600);  // Used to type in characters
-
   context.setupPins();
   context.readEEPROM();
   context.initDisplay();
