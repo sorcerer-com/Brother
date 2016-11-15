@@ -209,6 +209,17 @@ void selectMenu(Context& context)
 #endif
     setAutostartValue(context);
   }
+  else if (context.menuIndex == 37)                             // Clear credit
+  {
+#ifdef DEBUG
+    String str = String("Clear credit");
+    Serial.println(str);
+#endif
+    context.credit = 0;
+    context.lcd.setCursor(0, 1);
+    context.lcd.print(CLEAR);
+    waitEsc(context);
+  }
 }
 
 

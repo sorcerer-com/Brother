@@ -19,7 +19,7 @@ public:
   const int buttonsCount      = 5;
   const int buttonsPins[5]    = { 3, 4, 5, 6, 7 };
   const int relaysPins[5][2]  = { { 8, 9 }, { 10, -1 },  { 11, -1 }, { 12, -1 }, { 13, -1 } };
-  const int coinAcceptorPins[6] = { A0, A1, A2, A3, A3, A3 };
+  const int coinAcceptorPins[6] = { A0, A0, A0, A0, A0, A0 };
 
   // EEPROM
   const struct
@@ -45,6 +45,7 @@ public:
   
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
+  int credit = 0;
 
 
   Context():
@@ -115,11 +116,21 @@ public:
   {
     lcd.clear();
     lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
-    if (menuIndex == -1)
+    if (menuIndex == -1) // menu is not opened
     {
-      lcd.print(Welcome);
-      lcd.setCursor(0, 1);
-      lcd.print(Ready_cyr);
+      if (credit != 0)
+      {
+        lcd.print(Credit_cyr);
+        printCredit(credit);
+        lcd.setCursor(0, 1);
+        lcd.print(Choice_cyr);
+      }
+      else
+      {
+        lcd.print(Welcome);
+        lcd.setCursor(0, 1);
+        lcd.print(Ready_cyr);
+      }
     }
     else
       lcd.print(Menu(menuIndex));
