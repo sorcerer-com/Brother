@@ -58,7 +58,7 @@ public:
   #ifdef DEBUG
     Serial.begin(9600);
     
-    String str = "Setup main button pin: " + String(menuButtonPin);
+    String str = String(F("Setup main button pin: ")) + String(menuButtonPin);
     Serial.println(str);
   #endif
     // Menu/Enter Button Pin
@@ -68,7 +68,7 @@ public:
     for (int i = 0; i < buttonsCount; i++)
     {
   #ifdef DEBUG
-      String str = "Setup button " + String(i + 1) + " pin: " + String(buttonsPins[i]);
+      String str = String(F("Setup button ")) + String(i + 1) + F(" pin: ") + String(buttonsPins[i]);
       Serial.println(str);
   #endif
       pinMode(buttonsPins[i], INPUT_PULLUP);
@@ -82,7 +82,7 @@ public:
         if (relaysPins[i][j] == -1)
           continue;
   #ifdef DEBUG
-        String str = "Setup relay " + String(i + 1) + " pin: " + String(relaysPins[i][j]);
+        String str = String(F("Setup relay ")) + String(i + 1) + F(" pin: ") + String(relaysPins[i][j]);
         Serial.println(str);
   #endif
         pinMode(relaysPins[i][j], OUTPUT);
@@ -94,7 +94,7 @@ public:
     for (int i = 0; i < 6; i++)
     {
   #ifdef DEBUG
-      String str = "Setup coin acceptor " + String(i + 1) + " pin: " + String(coinAcceptorPins[i]);
+      String str = String(F("Setup coin acceptor ")) + String(i + 1) + F(" pin: ") + String(coinAcceptorPins[i]);
       Serial.println(str);
   #endif
       pinMode(coinAcceptorPins[i], INPUT_PULLUP);
@@ -105,7 +105,7 @@ public:
   void initDisplay() const
   {
 #ifdef DEBUG
-    Serial.println("Initialize LCD");
+    Serial.println(F("Initialize LCD"));
 #endif
     // initialize the lcd for 16 chars 2 lines, turn on backlight
     lcd.begin(16, 2);
@@ -118,7 +118,16 @@ public:
     lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
     if (menuIndex == -1) // menu is not opened
     {
-      if (credit != 0)
+      bool outOfService = (autostartValue == 0);
+      for (int i = 0; i < buttonsCount; i++)
+        outOfService &= !buttonsEnabled[i];
+      if (outOfService)
+      {
+        lcd.print(Welcome);
+        lcd.setCursor(0, 1);
+        lcd.print(OUT);        
+      }
+      else if (credit != 0)
       {
         lcd.print(Credit_cyr);
         printCredit(credit);
@@ -140,7 +149,7 @@ public:
   void readEEPROM() const
   {
 #ifdef DEBUG
-    Serial.println("Read EEPROM");
+    Serial.println(F("Read EEPROM"));
 #endif
     // buttons enabled
     for (int i = 0; i < buttonsCount; i++)
@@ -148,7 +157,7 @@ public:
       if (EEPROM[eeprom.buttonsEnabled[i]] != 0xff)
         EEPROM.get(eeprom.buttonsEnabled[i], buttonsEnabled[i]);
 #ifdef DEBUG
-      Serial.println("Read Button " + String(i + 1) + " enabled: " + String(buttonsEnabled[i]));
+      Serial.println(String(F("Read Button ")) + String(i + 1) + F(" enabled: ") + String(buttonsEnabled[i]));
 #endif
     }
     // totals
@@ -157,7 +166,7 @@ public:
       if (EEPROM[eeprom.totals[i]] != 0xff)
         EEPROM.get(eeprom.totals[i], totals[i]);
 #ifdef DEBUG
-      Serial.println("Read Total " + String(i + 1) + ": " + String(totals[i]));
+      Serial.println(String(F("Read Total ")) + String(i + 1) + F(": ") + String(totals[i]));
 #endif
     }
     // coint table
@@ -166,14 +175,14 @@ public:
       if (EEPROM[eeprom.coinTable[i]] != 0xff)
         EEPROM.get(eeprom.coinTable[i], coinTable[i]);
 #ifdef DEBUG
-      Serial.println("Read Coin Table " + String(i + 1) + ": " + String(coinTable[i]));
+      Serial.println(String(F("Read Coin Table ")) + String(i + 1) + F(": ") + String(coinTable[i]));
 #endif
     }
     // credit tables
     for (int i = 0; i < buttonsCount; i++)
     {
 #ifdef DEBUG
-      Serial.print("Read Credit Table " + String(i + 1));
+      Serial.print(String(F("Read Credit Table ")) + String(i + 1));
 #endif
       if (EEPROM[eeprom.creditTables[i]] != 0xff)
       {
@@ -201,7 +210,7 @@ public:
     if (EEPROM[eeprom.autostartValue] != 0xff)
       EEPROM.get(eeprom.autostartValue, autostartValue);
 #ifdef DEBUG
-    Serial.println("Read Autostart Value: " + String(autostartValue));
+    Serial.println(String(F("Read Autostart Value: ")) + String(autostartValue));
 #endif
 
   }
@@ -216,7 +225,7 @@ public:
   void relayOnOff(int relayIdx, bool on)
   {
 #ifdef DEBUG
-    String str = String("Relay ") + String(relayIdx) + " " + (on ? "On" : "Off");
+    String str = String(F("Relay ")) + String(relayIdx) + F(" ") + (on ? F("On") : F("Off"));
     Serial.println(str);
 #endif
     for (int i = 0; i < 2; i++)

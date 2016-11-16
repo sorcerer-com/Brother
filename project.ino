@@ -18,11 +18,12 @@ void loop()
   // TODO: reinit display in some time
   checkMenu(context); // menu.h
 
+  // check for inserted coin
   int coin = context.checkForCoin();
   if (coin != -1) // coin inserted
   {
 #ifdef DEBUG
-      String str = "Coin Inserted: " + String(context.coinTable[coin]);
+      String str = String(F("Coin Inserted: ")) + String(context.coinTable[coin]);
       Serial.println(str);
 #endif
     context.credit += context.coinTable[coin];

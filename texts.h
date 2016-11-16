@@ -11,6 +11,7 @@ const char Credit[]           = "Credit: ";
 const char Time[]             = "Time: ";
 
 const char BGN[]              = "LV";
+const char OUT[]              = "Out of service  ";
 
 const char TESTS[]            = "Test started    ";
 const char TESTF[]            = "Test finished   ";

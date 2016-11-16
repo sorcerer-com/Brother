@@ -23,7 +23,7 @@ void checkMenu(Context& context)
     if (pressed > /* TODO: 3 */0) // enter pressed for 3 sec - open menu
     {
 #ifdef DEBUG
-      Serial.println("Open Menu");
+      Serial.println(F("Open Menu"));
 #endif
       context.menuIndex = 0;
       context.refreshDisplay();
@@ -32,7 +32,7 @@ void checkMenu(Context& context)
     {
       unsigned long total = context.totals[context.buttonsCount];
 #ifdef DEBUG
-      String str = String("Print Total Counter: ") + String(total);
+      String str = String(F("Print Total Counter: ")) + String(total);
       Serial.println(str);
 #endif
       context.lcd.setCursor(0, 0);
@@ -48,7 +48,7 @@ void checkMenu(Context& context)
     if (buttonPressed(context, 0)) // up pressed
     {
 #ifdef DEBUG
-      Serial.println("Up Menu");
+      Serial.println(F("Up Menu"));
 #endif
       context.menuIndex++;
       if (context.menuIndex >= MenuCount) context.menuIndex = 0;
@@ -56,7 +56,7 @@ void checkMenu(Context& context)
     if (buttonPressed(context, 1)) // down pressed
     {
 #ifdef DEBUG
-      Serial.println("Down Menu");
+      Serial.println(F("Down Menu"));
 #endif
       context.menuIndex--;
       if (context.menuIndex < 0) context.menuIndex = MenuCount - 1;
@@ -64,14 +64,14 @@ void checkMenu(Context& context)
     if (buttonPressed(context, 2)) // exit pressed
     {
 #ifdef DEBUG
-      Serial.println("Exit Menu");
+      Serial.println(F("Exit Menu"));
 #endif
       context.menuIndex = -1;
     }
     if (buttonPressed(context, -1)) // enter pressed
     {
 #ifdef DEBUG
-      String str = "Select Menu " + String(context.menuIndex);
+      String str = String(F("Select Menu ")) + String(context.menuIndex);
       Serial.println(str);
 #endif
       selectMenu(context);
@@ -86,7 +86,7 @@ void selectMenu(Context& context)
   if (context.menuIndex == 1)                                   // VT code
   {
 #ifdef DEBUG
-    String str = String("VT CODE ") + CODE;
+    String str = String(F("VT CODE ")) + CODE;
     Serial.println(str);
 #endif
     context.lcd.setCursor(0, 1);
@@ -99,7 +99,7 @@ void selectMenu(Context& context)
     context.buttonsEnabled[btnIdx] = enableDisable(context, context.buttonsEnabled[btnIdx]);
     context.writeToEEPROM(context.eeprom.buttonsEnabled[btnIdx], context.buttonsEnabled[btnIdx]);
 #ifdef DEBUG
-    String str = String(context.buttonsEnabled[btnIdx] ? "Enable" : "Disable") + " Button " + String(btnIdx);
+    String str = String(context.buttonsEnabled[btnIdx] ? F("Enable") : F("Disable")) + F(" Button ") + String(btnIdx);
     Serial.println(str);
 #endif
   }
@@ -107,7 +107,7 @@ void selectMenu(Context& context)
   {
     int relayIdx = context.menuIndex - 7;
 #ifdef DEBUG
-    String str = String("Test Relay ") + String(relayIdx);
+    String str = String(F("Test Relay ")) + String(relayIdx);
     Serial.println(str);
 #endif
     test(context, relayIdx);
@@ -118,7 +118,7 @@ void selectMenu(Context& context)
     int totalIdx = context.menuIndex - 12;
     unsigned long total = context.totals[totalIdx];
 #ifdef DEBUG
-    String str = String("Print Total ") + String(totalIdx) + ": " + String(total);
+    String str = String(F("Print Total ")) + String(totalIdx) + F(": ") + String(total);
     Serial.println(str);
 #endif
     printTotal(context, totalIdx);
@@ -130,7 +130,7 @@ void selectMenu(Context& context)
     for (int i = 0; i < context.buttonsCount; i++)
       total += context.totals[i];
 #ifdef DEBUG
-    String str = String("Print Total: ") + String(total);
+    String str = String(F("Print Total: ")) + String(total);
     Serial.println(str);
 #endif
     printTotal(context, total);
@@ -140,7 +140,7 @@ void selectMenu(Context& context)
   {
     unsigned long total = context.totals[context.buttonsCount];
 #ifdef DEBUG
-    String str = String("Print Total Counter: ") + String(total);
+    String str = String(F("Print Total Counter: ")) + String(total);
     Serial.println(str);
 #endif
     printTotal(context, total);
@@ -155,7 +155,7 @@ void selectMenu(Context& context)
     context.lcd.print(CLEAR);
     waitEsc(context);
 #ifdef DEBUG
-    String str = String("Clear Total ") + String(totalIdx);
+    String str = String(F("Clear Total ")) + String(totalIdx);
     Serial.println(str);
 #endif
   }
@@ -170,14 +170,14 @@ void selectMenu(Context& context)
     context.lcd.print(CLEAR);
     waitEsc(context);
 #ifdef DEBUG
-    String str = String("Clear All Totals");
+    String str = String(F("Clear All Totals"));
     Serial.println(str);
 #endif
   }
   else if (context.menuIndex == 25)                             // Set coin table
   {
 #ifdef DEBUG
-    String str = String("Set Coin Table");
+    String str = String(F("Set Coin Table"));
     Serial.println(str);
 #endif
     setCoinTable(context);
@@ -187,7 +187,7 @@ void selectMenu(Context& context)
   {
     int tableIdx = context.menuIndex - 26;
 #ifdef DEBUG
-    String str = String("Read Credit Table ") + String(tableIdx);
+    String str = String(F("Read Credit Table ")) + String(tableIdx);
     Serial.println(str);
 #endif
     readCreditTable(context, tableIdx);
@@ -196,7 +196,7 @@ void selectMenu(Context& context)
   {
     int tableIdx = context.menuIndex - 31;
 #ifdef DEBUG
-    String str = String("Set Credit Table ") + String(tableIdx);
+    String str = String(F("Set Credit Table ")) + String(tableIdx);
     Serial.println(str);
 #endif
     setCreditTable(context, tableIdx);
@@ -204,7 +204,7 @@ void selectMenu(Context& context)
   else if (context.menuIndex == 36)                             // AUTOSTART value
   {
 #ifdef DEBUG
-    String str = String("Set Autostart value");
+    String str = String(F("Set Autostart value"));
     Serial.println(str);
 #endif
     setAutostartValue(context);
@@ -212,7 +212,7 @@ void selectMenu(Context& context)
   else if (context.menuIndex == 37)                             // Clear credit
   {
 #ifdef DEBUG
-    String str = String("Clear credit");
+    String str = String(F("Clear credit"));
     Serial.println(str);
 #endif
     context.credit = 0;
@@ -286,7 +286,7 @@ void setCoinTable(Context& context)
   {
     context.lcd.setCursor(0, 1);
     context.lcd.print(Insert);
-    String msg = String("TK") + String(i + 1);
+    String msg = String(F("TK")) + String(i + 1);
     context.lcd.print(msg);
     int coin = -1;
     while(coin == -1)
@@ -295,7 +295,7 @@ void setCoinTable(Context& context)
       delay(10);
     }
 #ifdef DEBUG
-    String str = String("Coin ") + String(coin) + " Inserted";
+    String str = String(F("Coin ")) + String(coin) + F(" Inserted");
     Serial.println(str);
 #endif
     context.coinTable[i] = 100;
