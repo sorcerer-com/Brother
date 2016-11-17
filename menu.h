@@ -275,7 +275,7 @@ void printTotal(const Context& context, unsigned long total)
   int b1 = b / 100;
   int b2 = b % 100;
   String msg = /*String(a1 / 10) + */String(a1 % 10) + String(a2 / 10) + String(a2 % 10) + 
-    String(b1 / 10) + String(b1 % 10) + "." + String(b2 / 10) + String(b2 % 10);
+    String(b1 / 10) + String(b1 % 10) + F(".") + String(b2 / 10) + String(b2 % 10);
   context.lcd.print(msg);
   context.lcd.print(BGN);
 }

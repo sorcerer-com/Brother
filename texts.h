@@ -32,6 +32,7 @@ const char Cont[]             = "Continue?       ";
 const char Ready_cyr[]        = " PUSNETE JETON  ";
 const char Credit_cyr[]       = "KREDIT: ";
 const char Choice_cyr[]       = "NAPRAVETE IZBOR ";
+const char* Time_cyr[]        = { "    Preparat    ", "   Vodostru>ka  ", "   Parostru>ka  ", "     Yetka      ", "     Pwna       " };
 
 const char menu_00[] PROGMEM  = "----- MENU -----";
 const char menu_01[] PROGMEM  = "VT code         ";

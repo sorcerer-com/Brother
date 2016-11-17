@@ -46,6 +46,8 @@ public:
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
   int credit = 0;
+  int work = -1;
+  long time = 0;
 
 
   Context():
@@ -127,6 +129,18 @@ public:
         lcd.setCursor(0, 1);
         lcd.print(OUT);        
       }
+      else if (time != 0)
+      {
+        lcd.print(Time_cyr[work]);
+        lcd.setCursor(0, 1);
+        byte hour = time / 3600;
+        int temp = time - ((int)hour * 3600);
+        byte min = temp / 60;
+        byte sec = temp % 60;
+        lcd.print(F("    "));
+        printTime(hour, min, sec);
+        lcd.print(F("    "));
+      }
       else if (credit != 0)
       {
         lcd.print(Credit_cyr);
@@ -198,7 +212,8 @@ public:
           adr +=  sizeof(creditTables[idx].min);
           EEPROM.get(adr, creditTables[idx].sec);
 #ifdef DEBUG
-        Serial.print(" " + String(creditTables[idx].credit) + " " + String(creditTables[idx].hour) + ":" + String(creditTables[idx].min) + ":" + String(creditTables[idx].sec));
+        Serial.print(String(F(" ")) + String(creditTables[idx].credit) + F(" ") + String(creditTables[idx].hour) + F(":") + 
+          String(creditTables[idx].min) + F(":") + String(creditTables[idx].sec));
 #endif
         }
       }
@@ -266,18 +281,46 @@ public:
   {
     int a = credit / 100;
     int b = credit % 100;
-    String msg = String(a / 10) + String(a % 10) + "." + String(b / 10) + String(b % 10) + " " + BGN;
+    String msg = String(a / 10) + String(a % 10) + F(".") + String(b / 10) + String(b % 10) + F(" ") + BGN;
     lcd.print(msg);
   }
 
   void printTime(byte hour, byte min, byte sec)
   {
-    String msg = String(hour / 10) + String(hour % 10) + ":" + 
-      String(min / 10) + String(min % 10) + ":" + 
+    String msg = String(hour / 10) + String(hour % 10) + F(":") + 
+      String(min / 10) + String(min % 10) + F(":") + 
       String(sec / 10) + String(sec % 10);
     lcd.print(msg);
   }
-  
+
+
+  void creditToTime(int channel)
+  {
+    if (credit == 0)
+    {
+      time = 0;
+      return;
+    }
+
+    int idx = -1;
+    for (int i = 0; i < 5; i++)
+    {
+      idx = channel * 5 + i;
+      if (credit <= creditTables[idx].credit)
+        break;
+    }
+    if (idx == -1)
+      return;
+    
+    long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
+    int a = temp / creditTables[idx].credit;
+    int b = temp % creditTables[idx].credit;
+    time = (long)a * credit;
+    temp = (long)b * credit;
+    temp /= creditTables[idx].credit;
+    time += temp;
+    credit = 0;
+  }
 };
 
 #endif // CONTEXT_H

@@ -1,6 +1,7 @@
 #include "menu.h"
 
 Context context;
+int secCounter = 0;
 
 /*-----( SETUP: RUNS ONCE )-----*/
 void setup()
@@ -27,9 +28,59 @@ void loop()
       Serial.println(str);
 #endif
     context.credit += context.coinTable[coin];
+    context.totals[context.buttonsCount] += context.coinTable[coin]; // total counter
+    // TODO: write to EEPROM
     context.refreshDisplay();
   }
 
+  // TODO: pause button?
+
+  int button = -1; // button pressed
+  for (int i = 0; i < context.buttonsCount; i++)
+  {
+    if (context.buttonsEnabled[i] && buttonPressed(context, i))
+    {
+      button = i;
+      break;
+    }
+  }
+  // TODO: autostart
+  if (button != -1 && context.work != button)
+  {
+    if (context.work == -1 && context.credit != 0) // start from beginning
+    {
+#ifdef DEBUG
+      String str = String(F("Button ")) + String(button) + F(" Activated");
+      Serial.println(str);
+#endif
+      context.work = button;
+      context.totals[context.work] += context.credit; // TODO: change button
+      // TODO: write to EEPROM
+      context.creditToTime(button);
+      context.relayOnOff(context.work, true);
+      context.refreshDisplay();
+      
+    }
+  }
+
+  // timer
+  if (context.work != -1)
+  {
+    if (secCounter == 10) // one second pass
+    {
+      secCounter = 0;
+      context.time--;
+      if (context.time == 0) // times up
+      {
+        context.relayOnOff(context.work, false);
+        context.work = -1;
+      }
+      context.refreshDisplay();
+    }
+    else
+      secCounter++;
+  }
+  
   delay(100);
 }
 
