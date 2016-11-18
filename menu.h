@@ -121,7 +121,7 @@ void selectMenu(Context& context)
     String str = String(F("Print Total ")) + String(totalIdx) + F(": ") + String(total);
     Serial.println(str);
 #endif
-    printTotal(context, totalIdx);
+    printTotal(context, total);
     waitEsc(context);
   }
   else if (context.menuIndex == 17)                             // Sale All
@@ -216,6 +216,8 @@ void selectMenu(Context& context)
     Serial.println(str);
 #endif
     context.credit = 0;
+    context.time = 0;
+    context.work = -1;
     context.lcd.setCursor(0, 1);
     context.lcd.print(CLEAR);
     waitEsc(context);

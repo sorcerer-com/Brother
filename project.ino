@@ -29,7 +29,13 @@ void loop()
 #endif
     context.credit += context.coinTable[coin];
     context.totals[context.buttonsCount] += context.coinTable[coin]; // total counter
-    // TODO: write to EEPROM
+    context.writeToEEPROM(context.eeprom.totals[context.buttonsCount], context.totals[context.buttonsCount]);
+    if (context.work != -1)
+    {
+      long temp = context.time;
+      context.creditToTime(context.work);
+      context.time += temp;
+    }
     context.refreshDisplay();
   }
 
@@ -55,11 +61,17 @@ void loop()
 #endif
       context.work = button;
       context.totals[context.work] += context.credit; // TODO: change button
-      // TODO: write to EEPROM
-      context.creditToTime(button);
-      context.relayOnOff(context.work, true);
-      context.refreshDisplay();
-      
+      if (!context.creditToTime(context.work))
+      {
+        context.work = -1;
+        context.totals[context.work] -= context.credit;
+      }
+      else
+      {
+        context.writeToEEPROM(context.eeprom.totals[context.work], context.totals[context.work]);
+        context.relayOnOff(context.work, true);
+        context.refreshDisplay();
+      }
     }
   }
 

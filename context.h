@@ -46,8 +46,8 @@ public:
   const LiquidCrystal_I2C lcd;
   int menuIndex = -1;
   int credit = 0;
-  int work = -1;
   long time = 0;
+  int work = -1;
 
 
   Context():
@@ -294,23 +294,22 @@ public:
   }
 
 
-  void creditToTime(int channel)
+  bool creditToTime(int channel)
   {
-    if (credit == 0)
-    {
-      time = 0;
-      return;
-    }
-
     int idx = -1;
     for (int i = 0; i < 5; i++)
     {
       idx = channel * 5 + i;
-      if (credit <= creditTables[idx].credit)
+      if (credit <= creditTables[idx].credit || creditTables[idx].credit == 0)
         break;
     }
-    if (idx == -1)
-      return;
+    if (creditTables[idx].credit == 0)
+    {
+      if (idx == channel * 5)
+        return false;
+      else
+        idx--;
+    }
     
     long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
     int a = temp / creditTables[idx].credit;
@@ -320,6 +319,7 @@ public:
     temp /= creditTables[idx].credit;
     time += temp;
     credit = 0;
+    return true;
   }
 };
 
