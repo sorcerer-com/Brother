@@ -71,7 +71,7 @@ void checkMenu(Context& context)
     if (buttonPressed(context, -1)) // enter pressed
     {
 #ifdef DEBUG
-      String str = String(F("Select Menu ")) + String(context.menuIndex);
+      String str = String(F("Select Menu: ")) + String(Menu(context.menuIndex));
       Serial.println(str);
 #endif
       selectMenu(context);
@@ -86,7 +86,7 @@ void selectMenu(Context& context)
   if (context.menuIndex == 1)                                   // VT code
   {
 #ifdef DEBUG
-    String str = String(F("VT CODE ")) + CODE;
+    String str = String(F("VT CODE: ")) + CODE;
     Serial.println(str);
 #endif
     context.lcd.setCursor(0, 1);

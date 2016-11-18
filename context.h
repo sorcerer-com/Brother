@@ -321,6 +321,30 @@ public:
     credit = 0;
     return true;
   }
+
+  void timeToCredit(int channel)
+  {
+    int idx = -1;
+    for (int i = 0; i < 5; i++)
+    {
+      idx = channel * 5 + i;
+      long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
+      if (time <= temp || creditTables[idx].credit == 0)
+        break;
+    }
+    if (creditTables[idx].credit == 0)
+        idx--;
+    
+    long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
+    int a = temp / creditTables[idx].credit;
+    int b = temp % creditTables[idx].credit;
+    long y2 = time * creditTables[idx].credit;
+    long x2 = (long)a * creditTables[idx].credit + b;
+    credit = y2 / x2;
+    time = 0;
+    return true;    
+  }
+  
 };
 
 #endif // CONTEXT_H
