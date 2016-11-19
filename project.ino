@@ -30,13 +30,18 @@ void loop()
     context.credit += context.coinTable[coin];
     context.totals[context.buttonsCount] += context.coinTable[coin]; // total counter
     context.writeToEEPROM(context.eeprom.totals[context.buttonsCount], context.totals[context.buttonsCount]);
-    if (context.work != -1) // TODO: bug if change button and the new time is in next creditTable record
+    if (context.work != -1)
     {
       context.totals[context.work] += context.credit;
       context.writeToEEPROM(context.eeprom.totals[context.work], context.totals[context.work]);
-      long temp = context.time;
+      int temp = context.credit;
+      context.timeToCredit(context.work);
+      context.credit += temp;
       context.creditToTime(context.work);
-      context.time += temp;
+#ifdef DEBUG
+      String str = String(F("Time: ")) + String(context.time) + F(" sec");
+      Serial.println(str);
+#endif
     }
     context.refreshDisplay();
   }
@@ -52,7 +57,8 @@ void loop()
       break;
     }
   }
-  // TODO: autostart
+  if (context.work == -1 && context.autostartValue != 0 && context.credit >= context.autostartValue) // autostart first button if value is reached
+    button = 0;
   if (button != -1 && context.work != button)
   {
     if (context.work != -1) // change button
@@ -60,6 +66,7 @@ void loop()
       context.timeToCredit(context.work);
       context.totals[context.work] -= context.credit;
       context.writeToEEPROM(context.eeprom.totals[context.work], context.totals[context.work]);
+      context.relayOnOff(context.work, false);
       context.work = -1;
 #ifdef DEBUG
       String str = String(F("Credit: ")) + String(context.credit);
@@ -82,7 +89,7 @@ void loop()
       else
       {
 #ifdef DEBUG
-      String str = String(F("Time On: ")) + String(context.time) + F(" sec");
+      String str = String(F("Time: ")) + String(context.time) + F(" sec");
       Serial.println(str);
 #endif
         context.writeToEEPROM(context.eeprom.totals[context.work], context.totals[context.work]);

@@ -464,21 +464,25 @@ void setAutostartValue(Context& context)
     {
       change = false;
       context.lcd.setCursor(0, 1);
-      context.lcd.print(Time);
-      byte min = context.autostartValue / 60;
-      byte sec = context.autostartValue % 60;
-      context.printTime(0, min, sec);
+      context.lcd.print(Credit);
+      context.printCredit(context.autostartValue);
     }
-    if (buttonPressed(context, 0)) // up pressed
+    int upPressed = buttonPressed(context, 0);
+    if (upPressed) // up pressed
     {
       change = true;
-      if (context.autostartValue < 240)
+      if (upPressed > 10) // for more than 1 sec
+        context.autostartValue += 100;
+      else
         context.autostartValue++;
     }
-    if (buttonPressed(context, 1)) // down pressed
+    int downPressed = buttonPressed(context, 1);
+    if (downPressed) // down pressed
     {
       change = true;
-      if (context.autostartValue > 0)
+      if (downPressed > 10 && context.autostartValue >= 100) // for more than 1 sec
+        context.autostartValue -= 100;
+      else if (context.autostartValue > 0)
         context.autostartValue--;
     }
     if (buttonPressed(context, -1)) // enter pressed

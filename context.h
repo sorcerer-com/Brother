@@ -28,7 +28,7 @@ public:
     const int totals[6]         = { 0x20, 0x30, 0x40, 0x50, 0x60, 0x70 }; // 4 byte
     const int coinTable[6]      = { 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B }; // 1 byte
     const int creditTables[5]   = { 0x25, 0x2B, 0x90, 0x95, 0x9B }; // 2 + 3 * 1 = 5 byte 
-    const int autostartValue    = 0x0D; // 1 byte
+    const int autostartValue    = 0x0D; // 2 byte
   } eeprom;
 
   // Current State
@@ -40,7 +40,7 @@ public:
     int credit = 0;
     byte hour = 0, min = 0, sec = 0;
   } creditTables[5 * 5];
-  byte autostartValue     = 0;
+  int autostartValue     = 0;
 
   
   const LiquidCrystal_I2C lcd;
