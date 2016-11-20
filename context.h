@@ -16,6 +16,7 @@ class Context
 public:
   // Pin
   const int menuButtonPin     = 2;
+  const int pauseButtonPin    = A3;
   const int buttonsCount      = 5;
   const int buttonsPins[5]    = { 3, 4, 5, 6, 7 };
   const int relaysPins[5][2]  = { { 8, 9 }, { 10, -1 },  { 11, -1 }, { 12, -1 }, { 13, -1 } };
@@ -48,6 +49,7 @@ public:
   int credit = 0;
   long time = 0;
   int work = -1;
+  bool paused = false;
 
 
   Context():
@@ -65,6 +67,13 @@ public:
   #endif
     // Menu/Enter Button Pin
     pinMode(menuButtonPin, INPUT_PULLUP);
+    
+  #ifdef DEBUG
+    str = String(F("Setup pause button pin: ")) + String(pauseButtonPin);
+    Serial.println(str);
+  #endif
+    // Pause Button Pin
+    pinMode(pauseButtonPin, INPUT_PULLUP);
 
     // Buttons Pins
     for (int i = 0; i < buttonsCount; i++)
@@ -128,6 +137,12 @@ public:
         lcd.print(Welcome);
         lcd.setCursor(0, 1);
         lcd.print(OUT);        
+      }
+      else if (paused)
+      {
+        lcd.print(Time_cyr[work]);
+        lcd.setCursor(0, 1);
+        lcd.print(Pause_cyr);
       }
       else if (time != 0)
       {

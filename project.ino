@@ -17,6 +17,7 @@ void setup()
 void loop()
 {
   // TODO: reinit display in some time
+  // TODO: cyrellic
   checkMenu(context); // menu.h
 
   // check for inserted coin
@@ -46,19 +47,37 @@ void loop()
     context.refreshDisplay();
   }
 
-  // TODO: pause button?
+  if (context.work != -1 && buttonPressed(context, -2)) // pause button pressed
+  {
+    context.paused = !context.paused;
+    context.relayOnOff(context.work, !context.paused);
+    context.refreshDisplay();
+#ifdef DEBUG
+      Serial.println(context.paused ? F("Paused") : F("Resumed"));
+#endif
+  }
 
   int button = -1; // button pressed
-  for (int i = 0; i < context.buttonsCount; i++)
+  if (context.menuIndex == -1 && (context.credit != 0 || context.time != 0)) // not in the menu and there are credits or time
   {
-    if (context.buttonsEnabled[i] && buttonPressed(context, i) && context.menuIndex == -1)
+    for (int i = 0; i < context.buttonsCount; i++)
     {
-      button = i;
-      break;
+      if (context.buttonsEnabled[i] && buttonPressed(context, i, false)) // if wait for button release it will block the timer
+      {
+        button = i;
+        break;
+      }
     }
   }
-  if (context.work == -1 && context.autostartValue != 0 && context.credit >= context.autostartValue) // autostart first button if value is reached
+  
+  if (context.work == -1 && context.autostartValue != 0 && context.credit >= context.autostartValue) // start first button if autostart credit is reached
+  {
+#ifdef DEBUG
+    Serial.println(F("Autostart"));
+#endif
     button = 0;
+  }
+    
   if (button != -1 && context.work != button)
   {
     if (context.work != -1) // change button
@@ -79,6 +98,7 @@ void loop()
       String str = String(F("Button ")) + String(button) + F(" Activated");
       Serial.println(str);
 #endif
+      context.paused = false;
       context.work = button;
       context.totals[context.work] += context.credit;
       if (!context.creditToTime(context.work))
@@ -100,7 +120,7 @@ void loop()
   }
 
   // timer
-  if (context.work != -1)
+  if (context.work != -1 && !context.paused)
   {
     if (secCounter == 10) // one second pass
     {

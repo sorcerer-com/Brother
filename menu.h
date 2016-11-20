@@ -20,7 +20,7 @@ void checkMenu(Context& context)
   if (context.menuIndex == -1) // menu is not opened
   {
     int pressed = buttonPressed(context, -1);
-    if (pressed > /* TODO: 3 */0) // enter pressed for 3 sec - open menu
+    if (pressed > 30) // enter pressed for 3 sec - open menu
     {
 #ifdef DEBUG
       Serial.println(F("Open Menu"));
@@ -215,9 +215,12 @@ void selectMenu(Context& context)
     String str = String(F("Clear credit"));
     Serial.println(str);
 #endif
+    if (context.work != -1)
+      context.relayOnOff(context.work, false);
     context.credit = 0;
     context.time = 0;
     context.work = -1;
+    context.paused = false;
     context.lcd.setCursor(0, 1);
     context.lcd.print(CLEAR);
     waitEsc(context);
@@ -498,16 +501,25 @@ void setAutostartValue(Context& context)
   }
 }
 
-int buttonPressed(const Context& context, int idx)
+int buttonPressed(const Context& context, int idx, bool waitToRelease /* = true */)
 {
-  int buttonPin = (idx < 0 || idx >= context.buttonsCount) ? context.menuButtonPin : context.buttonsPins[idx];
+  if (idx < -2 || idx >= context.buttonsCount)
+    return 0;
+  int buttonPin = idx < 0 ? (idx == -1 ? context.menuButtonPin : context.pauseButtonPin) : context.buttonsPins[idx];
   if (digitalRead(buttonPin) == LOW) // button pressed
   {
+    if (!waitToRelease)
+      return 1;
+      
     int res = 1;
     while (digitalRead(buttonPin) == LOW) { delay(100); res++; } // wait to release the button
     return res;
   }
   return 0;
+}
+int buttonPressed(const Context& context, int idx)
+{
+  return buttonPressed(context, idx, true);
 }
 
 void waitEsc(const Context& context)
