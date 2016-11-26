@@ -2,6 +2,7 @@
 
 Context context;
 int secCounter = 0;
+int reinitLCDCounter = 0;
 
 /*-----( SETUP: RUNS ONCE )-----*/
 void setup()
@@ -16,7 +17,16 @@ void setup()
 /*-----( LOOP: RUNS CONSTANTLY )-----*/
 void loop()
 {
-  // TODO: reinit display in some time
+  // re-init LCD every 10 sec
+  if (reinitLCDCounter == 100)
+  {
+    reinitLCDCounter = 0;
+    context.lcd.LCD::begin(16, 2, LCD_5x8DOTS);
+    context.refreshDisplay();
+  }
+  else
+    reinitLCDCounter++;
+    
   // TODO: cyrellic
   checkMenu(context); // menu.h
 

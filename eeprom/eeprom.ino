@@ -1,6 +1,7 @@
 #include <EEPROM.h>
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
 
   String str = String(EEPROM.length()) + "\n";
@@ -34,7 +35,8 @@ void setup() {
   //  EEPROM.write(i, 0xff);
 }
 
-void loop() {
+void loop()
+{
   // put your main code here, to run repeatedly:
 
 }

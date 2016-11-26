@@ -55,6 +55,20 @@ public:
   Context():
     lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE)  // Set the LCD I2C address
   {
+    int initCreditTable[5 * 5][4] =
+      { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 },
+        { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, 
+        { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, 
+        { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, 
+        { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+        
+    for (int i = 0; i < buttonsCount * 5; i++)
+    {
+      creditTables[i].credit = initCreditTable[i][0];
+      creditTables[i].hour   = initCreditTable[i][1];
+      creditTables[i].min    = initCreditTable[i][2];
+      creditTables[i].sec    = initCreditTable[i][3];
+    }
   }
 
   void setupPins() const
