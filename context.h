@@ -163,7 +163,7 @@ public:
         lcd.print(Time_cyr[work]);
         lcd.setCursor(0, 1);
         byte hour = time / 3600;
-        int temp = time - ((int)hour * 3600);
+        int temp = time - ((long)hour * 3600);
         byte min = temp / 60;
         byte sec = temp % 60;
         lcd.print(F("    "));
@@ -340,7 +340,7 @@ public:
         idx--;
     }
     
-    long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
+    long temp = (long)creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
     int a = temp / creditTables[idx].credit;
     int b = temp % creditTables[idx].credit;
     time = (long)a * credit;
@@ -357,14 +357,14 @@ public:
     for (int i = 0; i < 5; i++)
     {
       idx = channel * 5 + i;
-      long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
+      long temp = (long)creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
       if (time <= temp || creditTables[idx].credit == 0)
         break;
     }
     if (creditTables[idx].credit == 0)
         idx--;
     
-    long temp = creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
+    long temp = (long)creditTables[idx].hour * 3600 + creditTables[idx].min * 60 + creditTables[idx].sec;
     int a = temp / creditTables[idx].credit;
     int b = temp % creditTables[idx].credit;
     long y2 = time * creditTables[idx].credit;

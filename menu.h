@@ -19,27 +19,40 @@ void checkMenu(Context& context)
 {
   if (context.menuIndex == -1) // menu is not opened
   {
-    int pressed = buttonPressed(context, -1);
-    if (pressed > 30) // enter pressed for 3 sec - open menu
+    if (digitalRead(context.menuButtonPin) == LOW) // menu button pressed
     {
-#ifdef DEBUG
-      Serial.println(F("Open Menu"));
-#endif
-      context.menuIndex = 0;
-      context.refreshDisplay();
-    }
-    else if (pressed > 0) // show total
-    {
-      unsigned long total = context.totals[context.buttonsCount];
-#ifdef DEBUG
-      String str = String(F("Print Total Counter: ")) + String(total);
-      Serial.println(str);
-#endif
-      context.lcd.setCursor(0, 0);
-      context.lcd.print(Menu(18));
-      printTotal(context, total);
-      waitEsc(context);
-      context.refreshDisplay();
+      bool openMenu = true;
+      for (int i = 0; i < 20; i++) // check is menu button pressed for 2 sec
+      {
+        delay(100);
+        if (digitalRead(context.menuButtonPin) != LOW)
+        {
+          openMenu = false;
+          break;
+        }
+      }
+      if (openMenu) // enter pressed for 2 sec - open menu
+      {
+  #ifdef DEBUG
+        Serial.println(F("Open Menu"));
+  #endif
+        context.menuIndex = 0;
+        context.refreshDisplay();
+        while (digitalRead(context.menuButtonPin) == LOW) delay(100); // wait to release menu button
+      }
+      else
+      {
+        unsigned long total = context.totals[context.buttonsCount];
+  #ifdef DEBUG
+        String str = String(F("Print Total Counter: ")) + String(total);
+        Serial.println(str);
+  #endif
+        context.lcd.setCursor(0, 0);
+        context.lcd.print(Menu(18));
+        printTotal(context, total);
+        delay(3000);
+        context.refreshDisplay();
+      }
     }
   }
 
@@ -83,7 +96,42 @@ void checkMenu(Context& context)
 
 void selectMenu(Context& context)
 {
-  if (context.menuIndex == 1)                                   // VT code
+  if (context.menuIndex == 0)                                   // MENU
+  {
+#ifdef DEBUG
+  // print EEPROM
+  String str = String(F("\nEEPROM(")) + String(EEPROM.length()) + F("):\n");
+  Serial.write(str.c_str());
+  
+  Serial.write("    ");
+  for (int i = 0; i < 0x10; i++)
+  {
+    str = String("0") + String(i, HEX) + " ";
+    Serial.write(str.c_str());
+  }
+  Serial.write("\n\n");
+  
+  for (int i = 0; i < EEPROM.length() / 0x10; i++)
+  {
+    str = (i < 0x10 ? "0" : "") + String(i, HEX) + "0 ";
+    Serial.write(str.c_str());
+    for (int j = 0; j < 0x10; j++)
+    {
+      int value = EEPROM[i * 0x10 + j];
+      str = String(value, HEX) + " ";
+      if (value < 0x10) str = "0" + str;
+      Serial.write(str.c_str());
+    }
+    Serial.write("\n");
+  }
+
+  // clear EEPROM
+  //Serial.write("\nClear EEPROM\n");
+  //for (int i = 0; i < EEPROM.length(); i++)
+  //  EEPROM.write(i, 0xff);
+#endif
+  }
+  else if (context.menuIndex == 1)                              // VT code
   {
 #ifdef DEBUG
     String str = String(F("VT CODE: ")) + CODE;
@@ -289,7 +337,7 @@ void setCoinTable(Context& context)
 {
   for (int i = 0; i < 6; i++)
   {
-    context.lcd.setCursor(0, 1);
+    /*context.lcd.setCursor(0, 1);
     context.lcd.print(Insert);
     String msg = String(F("TK")) + String(i + 1);
     context.lcd.print(msg);
@@ -304,10 +352,52 @@ void setCoinTable(Context& context)
     Serial.println(str);
 #endif
     context.coinTable[i] = 100;
-    context.writeToEEPROM(context.eeprom.coinTable[coin], context.coinTable[coin]);
+    context.writeToEEPROM(context.eeprom.coinTable[coin], context.coinTable[coin]);*/
+    
+    context.lcd.setCursor(0, 0);
+    String msg = String(F("Coin Table ")) + String(i + 1) + F("    ");
+    context.lcd.print(msg);
+    
+    bool change = true;
+    while(true)
+    {
+      if (change)
+      {
+        change = false;
+        context.lcd.setCursor(0, 1);
+        context.lcd.print(Credit);
+        context.printCredit(context.coinTable[i]);
+      }
+      int upPressed = buttonPressed(context, 0);
+      if (upPressed) // up pressed
+      {
+        change = true;
+        if (upPressed > 10 && context.coinTable[i] < 200) // for more than 1 sec
+          context.coinTable[i] += 100;
+        else if (context.coinTable[i] < 200)
+          context.coinTable[i] += 5;
+      }
+      int downPressed = buttonPressed(context, 1);
+      if (downPressed) // down pressed
+      {
+        change = true;
+        if (downPressed > 10 && context.coinTable[i] >= 100) // for more than 1 sec
+          context.coinTable[i] -= 100;
+        else if (context.coinTable[i] > 0)
+          context.coinTable[i] -= 5;
+      }
+      if (buttonPressed(context, -1)) // enter pressed
+      {
+        context.writeToEEPROM(context.eeprom.coinTable[i], context.coinTable[i]);
+        context.lcd.setCursor(0, 1);
+        context.lcd.print(Save);
+        delay(500);
+        break;
+      }
+      if (buttonPressed(context, 2)) // exit pressed
+        break;
+    }
   }
-  context.lcd.setCursor(0, 1);
-  context.lcd.print(Save);
 }
 
 void readCreditTable(const Context& context, int tableIdx)

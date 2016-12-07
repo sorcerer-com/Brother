@@ -57,11 +57,15 @@ void loop()
     context.refreshDisplay();
   }
 
-  if (context.work != -1 && buttonPressed(context, -2)) // pause button pressed
+  if (context.work != -1 && buttonPressed(context, -2, false)) // pause button pressed
   {
+    if (context.paused)
+      while (digitalRead(context.pauseButtonPin) == LOW) delay(100); // wait to release pause button
     context.paused = !context.paused;
     context.relayOnOff(context.work, !context.paused);
     context.refreshDisplay();
+    if (context.paused)
+      while (digitalRead(context.pauseButtonPin) == LOW) delay(100); // wait to release pause button
 #ifdef DEBUG
       Serial.println(context.paused ? F("Paused") : F("Resumed"));
 #endif
@@ -136,7 +140,7 @@ void loop()
     {
       secCounter = 0;
       context.time--;
-      if (context.time == 0) // times up
+      if (context.time <= 0) // times up
       {
         context.relayOnOff(context.work, false);
         context.work = -1;
