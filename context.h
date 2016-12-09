@@ -347,6 +347,8 @@ public:
     temp = (long)b * credit;
     temp /= creditTables[idx].credit;
     time += temp;
+    if (time == 0)
+      return false;
     credit = 0;
     return true;
   }
