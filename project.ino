@@ -1,7 +1,7 @@
 #include "menu.h"
 
 Context context;
-int secCounter = 0;
+unsigned long timer = 0;
 int reinitLCDCounter = 0;
 
 /*-----( SETUP: RUNS ONCE )-----*/
@@ -13,12 +13,11 @@ void setup()
   context.refreshDisplay();
 }
 
-
 /*-----( LOOP: RUNS CONSTANTLY )-----*/
 void loop()
 {
-  // re-init LCD every 10 sec
-  if (reinitLCDCounter == 100)
+  // re-init LCD every 60 sec
+  if (reinitLCDCounter == 60 * 100)
   {
     reinitLCDCounter = 0;
     context.lcd.LCD::begin(16, 2, LCD_5x8DOTS);
@@ -75,6 +74,9 @@ void loop()
           if (freeCounter == 3)
           {
             context.time += 60; // add minute
+#ifdef DEBUG
+      Serial.println(F("Add 60 seconds free time"));
+#endif
             freeCounter = 0;
           }
           delay(100);
@@ -150,10 +152,11 @@ void loop()
   // timer
   if (context.work != -1 && !context.paused)
   {
-    if (secCounter == 10) // one second pass
+    int deltaTime = (millis() - timer) / 100;
+    if (deltaTime >= 10) // at least one second passed
     {
-      secCounter = 0;
-      context.time--;
+      timer += (unsigned long)(deltaTime / 10) * 1000;
+      context.time -= deltaTime / 10;
       if (context.time <= 0) // times up
       {
         context.relayOnOff(context.work, false);
@@ -162,11 +165,9 @@ void loop()
       }
       context.refreshDisplay();
     }
-    else
-      secCounter++;
-    if (context.time < 30)
+    if (context.time > 0 && context.time < 30)
     {
-      if (secCounter < 5)
+      if (deltaTime < 5)
         context.lcd.backlight();
       else
         context.lcd.noBacklight();
@@ -174,8 +175,10 @@ void loop()
     else
         context.lcd.backlight();
   }
+  else
+    timer = millis();
   
-  delay(100);
+  delay(10);
 }
 
 
