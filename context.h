@@ -44,7 +44,7 @@ public:
   int autostartValue     = 0;
 
   
-  const LiquidCrystal_I2C lcd;
+  LiquidCrystal_I2C lcd;
   int menuIndex = -1;
   int credit = 0;
   long time = 0;
@@ -132,6 +132,24 @@ public:
 #ifdef DEBUG
     Serial.println(F("Initialize LCD"));
 #endif
+
+    // scan for I2C address of the LCD
+    Wire.begin();
+    for(byte address = 1; address < 127; address++)
+    {
+      // The i2c_scanner uses the return value of
+      // the Write.endTransmisstion to see if
+      // a device did acknowledge to the address.
+      Wire.beginTransmission(address);
+      byte error = Wire.endTransmission();
+  
+      if (error == 0 && address != 0x27)
+      {
+        this->lcd = LiquidCrystal_I2C(address, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
+        break;
+      }
+    }
+    
     // initialize the lcd for 16 chars 2 lines, turn on backlight
     lcd.begin(16, 2);
     lcd.backlight();
