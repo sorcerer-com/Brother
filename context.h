@@ -20,7 +20,7 @@ public:
   const int buttonsCount      = 5;
   const int buttonsPins[5]    = { 3, 4, 5, 6, 7 };
   const int relaysPins[5][2]  = { { 8, 9 }, { 10, -1 },  { 11, -1 }, { 12, -1 }, { 13, -1 } };
-  const int coinAcceptorPins[6] = { A0, A0, A0, A0, A0, A0 };
+  const int coinAcceptorPins[7] = { A0, A0, A0, A0, A0, A0, A1 };
 
   // EEPROM
   const struct
@@ -124,6 +124,12 @@ public:
   #endif
       pinMode(coinAcceptorPins[i], INPUT_PULLUP);
     }
+  #ifdef DEBUG
+    str = String(F("Setup coin acceptor ")) + String(7) + F(" pin: ") + String(coinAcceptorPins[6]);
+    Serial.println(str);
+  #endif
+    pinMode(coinAcceptorPins[6], OUTPUT);
+    digitalWrite(coinAcceptorPins[6], LOW);
   }
 
   
@@ -315,7 +321,12 @@ public:
         }
         if (res)
         {
-          while (digitalRead(coinAcceptorPins[i]) == LOW) delay(10); // wait for signals end
+          delay(100); //CF350 normally it is missing
+          //while (digitalRead(coinAcceptorPins[i]) == LOW) delay(10); // wait for signals end //CF350 normally have it 
+          // send accept signal
+          digitalWrite(coinAcceptorPins[6], HIGH); //CF350 normally it is missing
+          delay(100);                              //CF350 normally it is missing
+          digitalWrite(coinAcceptorPins[6], LOW);  //CF350 normally it is missing
           return i;
         }
       }
