@@ -10,6 +10,7 @@
 #include <EEPROM.h>
 
 #include "texts.h"
+#include "cyr.h"
 
 class Context
 {
@@ -165,6 +166,7 @@ public:
   {
     lcd.clear();
     lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
+    clear_cyrSet();
     if (menuIndex == -1) // menu is not opened
     {
       bool outOfService = (autostartValue == 0);
@@ -178,13 +180,16 @@ public:
       }
       else if (paused)
       {
-        lcd.print(Time_cyr[work]);
+        //lcd.print(Time_cyr[work]);
+        print_cyr(lcd, 0, 0, Time_cyr[work]);
         lcd.setCursor(0, 1);
-        lcd.print(Pause_cyr);
+        //lcd.print(Pause_cyr);
+        print_cyr(lcd, 0, 1, Pause_cyr);
       }
       else if (time != 0)
       {
-        lcd.print(Time_cyr[work]);
+        //lcd.print(Time_cyr[work]);
+        print_cyr(lcd, 0, 0, Time_cyr[work]);
         lcd.setCursor(0, 1);
         byte hour = time / 3600;
         int temp = time - ((long)hour * 3600);
@@ -196,16 +201,19 @@ public:
       }
       else if (credit != 0)
       {
-        lcd.print(Credit_cyr);
+        //lcd.print(Credit_cyr);
+        print_cyr(lcd, 0, 0, Credit_cyr);
         printCredit(credit);
         lcd.setCursor(0, 1);
-        lcd.print(Choice_cyr);
+        //lcd.print(Choice_cyr);
+        print_cyr(lcd, 0, 1, Choice_cyr);
       }
       else
       {
         lcd.print(Welcome);
         lcd.setCursor(0, 1);
-        lcd.print(Ready_cyr);
+        //lcd.print(Ready_cyr);
+        print_cyr(lcd, 0, 1, Ready_cyr);
       }
     }
     else
