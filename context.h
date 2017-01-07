@@ -166,7 +166,6 @@ public:
   {
     lcd.clear();
     lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
-    clear_cyrSet();
     if (menuIndex == -1) // menu is not opened
     {
       bool outOfService = (autostartValue == 0);

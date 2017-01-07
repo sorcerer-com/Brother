@@ -474,33 +474,37 @@ const byte cyr_ya[8] PROGMEM = {
 
 
 uint32_t charSetPtrs[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-uint8_t currCharIdx = 0;
+uint8_t charSetAges[8] = { 100, 100, 100, 100, 100, 100, 100 };
 bool charToLCD(const LiquidCrystal_I2C& lcd, uint8_t col, uint8_t row, uint32_t charPtr)
 {
+  for (int i = 0; i < 8; i++)
+    charSetAges[i]++;
+
+  uint8_t maxAge = 0;
+  uint8_t idx = 0;
   for (int i = 0; i < 8; i++)
   {
     if (charSetPtrs[i] == charPtr) // the char is already in the set
     {
       lcd.write(byte(i));
+      charSetAges[i] = 0;
       return false;
+    }
+    if (maxAge < charSetAges[i])
+    {
+      maxAge = charSetAges[i];
+      idx = i;
     }
   }
 
   uint8_t cyr[8];
   memcpy_PF(cyr, charPtr, 8);
-  lcd.createChar(currCharIdx, cyr);
+  lcd.createChar(idx, cyr);
   lcd.setCursor(col, row);
-  lcd.write(byte(currCharIdx));
-  charSetPtrs[currCharIdx] = charPtr;
-  currCharIdx = (currCharIdx + 1) % 8;
+  lcd.write(byte(idx));
+  charSetPtrs[idx] = charPtr;
+  charSetAges[idx] = 0;
   return true;
-}
-
-void clear_cyrSet()
-{
-  currCharIdx = 0;
-  for (int i = 0; i < 8; i++)
-    charSetPtrs[i] = 0;
 }
 
 void print_cyr(const LiquidCrystal_I2C& lcd, uint8_t col, uint8_t row, const char* str)
@@ -583,13 +587,13 @@ void print_cyr(const LiquidCrystal_I2C& lcd, uint8_t col, uint8_t row, const cha
       case 'Y': //Ч
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_CH);
       break;
-      case '6': //Ш
+      case '?': //Ш
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_SH);
       break;
-      case '7': //Щ
+      case '&': //Щ
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_SHT);
       break;
-      case '/': //Ъ
+      case 'X': //Ъ
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_ER_GOL);
       break;
       case 'Q': //Ю
@@ -670,16 +674,16 @@ void print_cyr(const LiquidCrystal_I2C& lcd, uint8_t col, uint8_t row, const cha
       case 'y': //ч
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_ch);
       break;
-      case '8': //ш
+      case '/': //ш
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_sh);
       break;
-      case '9': //щ
+      case '%': //щ
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_sht);
       break;
-      case '\\': //ъ
+      case 'x': //ъ
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_er_gol);
       break;
-      case '`': //ь
+      case '#': //ь
         charToLCD(lcd, col + currChar, row,  (uint32_t)cyr_er_mal);
       break;
       case 'q': //ю
