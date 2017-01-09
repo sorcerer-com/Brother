@@ -29,6 +29,7 @@ void loop()
   {
     reinitLCDCounter = 0;
     context.lcd.LCD::begin(16, 2, LCD_5x8DOTS);
+    reset_cyr();
     context.refreshDisplay();
   }
   else

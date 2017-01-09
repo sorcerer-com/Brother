@@ -507,6 +507,15 @@ bool charToLCD(const LiquidCrystal_I2C& lcd, uint8_t col, uint8_t row, uint32_t 
   return true;
 }
 
+void reset_cyr()
+{
+  for (int i = 0; i < 8; i++)
+  {
+    charSetPtrs[i] = 0;
+    charSetAges[i] = 100;
+  }
+}
+
 void print_cyr(const LiquidCrystal_I2C& lcd, uint8_t col, uint8_t row, const char* str)
 {
   int currChar  = 0;
