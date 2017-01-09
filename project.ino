@@ -4,6 +4,7 @@
 Context context;
 unsigned long timer = 0;
 int reinitLCDCounter = 0;
+unsigned long autoStartTimer = 0;
 
 /*-----( SETUP: RUNS ONCE )-----*/
 void setup()
@@ -109,10 +110,16 @@ void loop()
   
   if (context.work == -1 && context.autostartValue != 0 && context.credit >= context.autostartValue) // start first button if autostart credit is reached
   {
+    if (autoStartTimer == 0)
+      autoStartTimer = millis();
+    else if (millis() - autoStartTimer > 8000) // 8 seconds passed
+    {
 #ifdef DEBUG
-    Serial.println(F("Autostart"));
+      Serial.println(F("Autostart"));
 #endif
-    button = 0;
+      button = 0;
+      autoStartTimer = 0;
+    }
   }
     
   if (button != -1 && context.work != button)
