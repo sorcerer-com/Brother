@@ -29,7 +29,8 @@ const char DIS[]              = "    Disable?    ";
 
 const char Cont[]             = "Continue?       ";
 
-const char Ready_cyr[]        = " PUSNETE JETON  ";
+const char Ready_cyr[]        = " PUSNETE MONETA ";
+const char Ready2_cyr[]       = " PUSNETE JETON  ";
 const char Credit_cyr[]       = "KREDIT: ";
 const char Choice_cyr[]       = "NAPRAVETE IZBOR ";
 const char Pause_cyr[]        = "     PAUZA      ";
@@ -73,13 +74,14 @@ const char menu_34[] PROGMEM  = "Set chetka      ";
 const char menu_35[] PROGMEM  = "Set pqna        ";
 const char menu_36[] PROGMEM  = "AUTOSTART value ";
 const char menu_37[] PROGMEM  = "Clear credit    ";
+const char menu_38[] PROGMEM  = "Use jetoni      ";
 
-const int MenuCount = 38;
+const int MenuCount = 39;
 const char* const menu[] PROGMEM = 
 	{ menu_00, menu_01, menu_02, menu_03, menu_04, menu_05, menu_06, menu_07, menu_08, menu_09,
 	  menu_10, menu_11, menu_12, menu_13, menu_14, menu_15, menu_16, menu_17, menu_18, menu_19,
 	  menu_20, menu_21, menu_22, menu_23, menu_24, menu_25, menu_26, menu_27, menu_28, menu_29,
-	  menu_30, menu_31, menu_32, menu_33, menu_34, menu_35, menu_36, menu_37 };
+	  menu_30, menu_31, menu_32, menu_33, menu_34, menu_35, menu_36, menu_37, menu_38 };
 
 
 char buffer[20];

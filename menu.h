@@ -273,6 +273,14 @@ void selectMenu(Context& context)
     context.lcd.print(CLEAR);
     waitEsc(context);
   }
+  else if (context.menuIndex == 38)                           // Use Tokens
+  {
+    context.useTokens = enableDisable(context, context.useTokens);
+    context.writeToEEPROM(context.eeprom.useTokens, context.useTokens);
+#ifdef DEBUG
+    Serial.println(context.useTokens ? F("Use Tokens") : F("Use Coints"));
+#endif
+  }
 }
 
 

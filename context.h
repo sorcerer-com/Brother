@@ -2,12 +2,17 @@
 #define CONTEXT_H
 
 #define DEBUG
+#define LCD2
 
 #include <Wire.h>
 // https://arduino-info.wikispaces.com/LCD-Blue-I2C
 // https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads
 #include <LiquidCrystal_I2C.h>
 #include <EEPROM.h>
+
+#ifdef LCD2
+#include <Adafruit_LEDBackpack.h>
+#endif
 
 #include "texts.h"
 #include "cyr.h"
@@ -31,6 +36,7 @@ public:
     const int coinTable[6]      = { 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B }; // 1 byte
     const int creditTables[5]   = { 0x25, 0x2B, 0x90, 0x95, 0x9B }; // 2 + 3 * 1 = 5 byte 
     const int autostartValue    = 0x0D; // 2 byte
+    const int useTokens         = 0x0f; // 1 byte
   } eeprom;
 
   // Current State
@@ -43,9 +49,13 @@ public:
     byte hour = 0, min = 0, sec = 0;
   } creditTables[5 * 5];
   int autostartValue     = 0;
+  bool useTokens = false;
 
   
   LiquidCrystal_I2C lcd;
+#ifdef LCD2
+  Adafruit_7segment lcd2;
+#endif
   int menuIndex = -1;
   int credit = 0;
   long time = 0;
@@ -149,11 +159,18 @@ public:
       // a device did acknowledge to the address.
       Wire.beginTransmission(address);
       byte error = Wire.endTransmission();
-  
-      if (error == 0 && address != 0x27)
+
+      if (error == 0)
       {
-        this->lcd = LiquidCrystal_I2C(address, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
-        break;
+#ifdef DEBUG
+        Serial.println(String(F("LCD Address ")) + String(address));
+#endif
+        if (address != 0x27 && (address < 0x70 || address > 0x77))
+          this->lcd = LiquidCrystal_I2C(address, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Set the LCD I2C address
+#ifdef LCD2
+        if (address >= 0x70 && address <= 0x77)
+          this->lcd2.begin(address);
+#endif
       }
     }
     
@@ -164,6 +181,14 @@ public:
   
   void refreshDisplay() const
   {
+#ifdef LCD2
+    lcd2.writeDigitNum(0, 0, false);
+    lcd2.writeDigitNum(1, 0, false);
+    lcd2.writeDigitNum(3, 0, false);
+    lcd2.writeDigitNum(4, 0, false);
+    lcd2.drawColon(true);
+#endif
+    
     lcd.clear();
     lcd.setCursor(0, 0); // Cursor Position: (CHAR, LINE) start at 0
     if (menuIndex == -1) // menu is not opened
@@ -175,7 +200,12 @@ public:
       {
         lcd.print(Welcome);
         lcd.setCursor(0, 1);
-        lcd.print(OUT);        
+        lcd.print(OUT);
+
+#ifdef LCD2
+        lcd2.print(10000); // print dashes
+        lcd2.drawColon(true);
+#endif
       }
       else if (paused)
       {
@@ -197,6 +227,14 @@ public:
         lcd.print(F("    "));
         printTime(hour, min, sec);
         lcd.print(F("    "));
+
+#ifdef LCD2
+        lcd2.writeDigitNum(0, min / 10, false);
+        lcd2.writeDigitNum(1, min % 10, false);
+        lcd2.drawColon(sec % 2 == 1);
+        lcd2.writeDigitNum(3, sec / 10, false);
+        lcd2.writeDigitNum(4, sec % 10, false);
+#endif
       }
       else if (credit != 0)
       {
@@ -212,11 +250,18 @@ public:
         lcd.print(Welcome);
         lcd.setCursor(0, 1);
         //lcd.print(Ready_cyr);
-        print_cyr(lcd, 0, 1, Ready_cyr);
+        if (useTokens)
+          print_cyr(lcd, 0, 1, Ready2_cyr);
+        else
+          print_cyr(lcd, 0, 1, Ready_cyr);
       }
     }
     else
       lcd.print(Menu(menuIndex));
+
+#ifdef LCD2
+    lcd2.writeDisplay();
+#endif
   }
   
   
@@ -286,6 +331,12 @@ public:
       EEPROM.get(eeprom.autostartValue, autostartValue);
 #ifdef DEBUG
     Serial.println(String(F("Read Autostart Value: ")) + String(autostartValue));
+#endif
+    // use tokens
+    if (EEPROM[eeprom.useTokens] != 0xff)
+      EEPROM.get(eeprom.useTokens, useTokens);
+#ifdef DEBUG
+    Serial.println(String(F("Read Use Tokens: ")) + String(useTokens));
 #endif
 
   }

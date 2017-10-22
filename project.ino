@@ -9,20 +9,20 @@ unsigned long autoStartTimer = 0;
 /*-----( SETUP: RUNS ONCE )-----*/
 void setup()
 {
-  wdt_disable(); // disable watchdog timer
+  //wdt_disable(); // disable watchdog timer
   
   context.setupPins();
   context.readEEPROM();
   context.initDisplay();
   context.refreshDisplay();
   
-  wdt_enable(WDTO_2S); // set watchdog timer to 2 sec
+  //wdt_enable(WDTO_2S); // set watchdog timer to 2 sec
 }
 
 /*-----( LOOP: RUNS CONSTANTLY )-----*/
 void loop()
 {
-  wdt_reset(); // reset watchdog timer
+  //wdt_reset(); // reset watchdog timer
   
   // re-init LCD every 60 sec
   if (reinitLCDCounter == 60 * 100)
@@ -35,7 +35,6 @@ void loop()
   else
     reinitLCDCounter++;
     
-  // TODO: cyrellic
   checkMenu(context); // menu.h
 
   // check for inserted coin
