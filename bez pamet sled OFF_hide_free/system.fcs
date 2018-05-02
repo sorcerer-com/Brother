@@ -1,0 +1,1863 @@
+
+CC8E Version 1.1E, Copyright (c) B Knudsen Data.
+* FUNCTION CALL STRUCTURE
+
+F: highPriorityIntServer  :#0 
+    _highPriorityInt      : #1 
+
+F: lowPriorityIntServer   :#0 
+    scan                  : #1 
+    REL1_ON               : #5 
+    REL2_ON               : #5 
+    REL3_ON               : #5 
+    REL4_ON               : #5 
+    REL6_ON               : #5 
+    REL_OFF               : #7 
+    REL_OFF               : #7 
+
+F: _highPriorityInt       :#1 
+
+F: SPI_Send               :#0 
+
+F: SPI_setup              :#1 
+
+F: PCcmd                  :#0 
+    _const1               : #2 
+    _const1               : #2 
+    PC_TX                 : #3 
+
+F: terminate              :#0 
+    PC_TX                 : #3 
+    PC_TX                 : #3 
+
+F: PC_TX                  :#3 
+
+F: _divU16_8              :#12
+
+F: _divU16_16             :#0 
+
+F: _divS16_8              :#0 
+
+F: _divS16_16             :#0 
+
+F: _remU16_8              :#13
+
+F: _remU16_16             :#0 
+
+F: _remS16_8              :#0 
+
+F: _remS16_16             :#0 
+
+F: SYSTEM_setup           :#1 
+
+F: ini                    :#1 
+
+F: ADC                    :#0 
+
+F: delay                  :#208
+
+F: delaySec               :#0 
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+
+F: conv                   :#10
+
+F: start_int              :#1 
+
+F: ESCbut                 :#24
+    delay                 : #208
+    delay                 : #208
+
+F: hex2dec                :#0 
+
+F: scan                   :#1 
+
+F: REL1_ON                :#5 
+
+F: REL2_ON                :#5 
+
+F: REL3_ON                :#5 
+
+F: REL4_ON                :#5 
+
+F: REL6_ON                :#5 
+
+F: REL_OFF                :#7 
+
+F: readEEPROM             :#70
+
+F: writeEEPROM            :#99
+
+F: Load                   :#1 
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+
+F: cr_to_time             :#10
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+
+F: time_to_cr             :#5 
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+
+F: lcd_write              :#51
+    delay                 : #208
+
+F: lcd_setup              :#4 
+    lcd_write             : #51
+    delay                 : #208
+    lcd_write             : #51
+    lcd_write             : #51
+    delay                 : #208
+    lcd_write             : #51
+    delay                 : #208
+
+F: lcd_goto               :#74
+    lcd_write             : #51
+
+F: lcd_clear              :#21
+    lcd_write             : #51
+    delay                 : #208
+
+F: lcd_puts               :#73
+    _const2               : #2 
+    _const2               : #2 
+    lcd_write             : #51
+
+F: lat2cyr                :#1 
+    _const3               : #4 
+    _const3               : #4 
+
+F: lcd_puts_cyr           :#25
+    _const5               : #2 
+    _const5               : #2 
+    lat2cyr               : #1 
+    lcd_write             : #51
+
+F: lcd_credit             :#8 
+    _remU16_8             : #13
+    _divU16_8             : #12
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+    lcd_write             : #51
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+    lcd_puts_cyr          : #25
+
+F: lcd_time               :#9 
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+    lcd_write             : #51
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+    lcd_write             : #51
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+
+F: lcd_money              :#2 
+    _divU16_8             : #12
+    _remU16_8             : #13
+    _divU16_8             : #12
+    _remU16_8             : #13
+    _remU16_8             : #13
+    lcd_write             : #51
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+    lcd_write             : #51
+    _divU16_8             : #12
+    lcd_write             : #51
+    _remU16_8             : #13
+    lcd_write             : #51
+
+F: lcd_out                :#1 
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+
+F: st_clear               :#7 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+
+F: print_total            :#8 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_money             : #2 
+    lcd_puts              : #73
+    ESCbut                : #24
+
+F: scan_menu              :#1 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    _const3               : #4 
+    lcd_write             : #51
+    ESCbut                : #24
+    en_to_dis             : #8 
+    ESCbut                : #24
+    en_to_dis             : #8 
+    ESCbut                : #24
+    en_to_dis             : #8 
+    ESCbut                : #24
+    en_to_dis             : #8 
+    ESCbut                : #24
+    en_to_dis             : #8 
+    ESCbut                : #24
+    test                  : #5 
+    test                  : #5 
+    test                  : #5 
+    test                  : #5 
+    test                  : #5 
+    print_total           : #8 
+    print_total           : #8 
+    print_total           : #8 
+    print_total           : #8 
+    print_total           : #8 
+    print_total           : #8 
+    print_total           : #8 
+    print_total           : #8 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    readEEPROM            : #70
+    delay                 : #208
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    readEEPROM            : #70
+    delay                 : #208
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    lcd_write             : #51
+    readEEPROM            : #70
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_clear             : #21
+    readEEPROM            : #70
+    readEEPROM            : #70
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    readEEPROM            : #70
+    readEEPROM            : #70
+    readEEPROM            : #70
+    lcd_time              : #9 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    delay                 : #208
+    delay                 : #208
+    readEEPROM            : #70
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    lcd_setup             : #4 
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts              : #73
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_time              : #9 
+    lcd_goto              : #74
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    lcd_setup             : #4 
+    lcd_clear             : #21
+    delay                 : #208
+    delay                 : #208
+    en_to_dis             : #8 
+    en_to_dis             : #8 
+    en_to_dis             : #8 
+    _divU16_8             : #12
+    _remU16_8             : #13
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_time              : #9 
+    delay                 : #208
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    st_clear              : #7 
+
+F: en_to_dis              :#8 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    delay                 : #208
+
+F: test                   :#5 
+    REL1_ON               : #5 
+    REL2_ON               : #5 
+    REL3_ON               : #5 
+    REL4_ON               : #5 
+    REL6_ON               : #5 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    conv                  : #10
+    lcd_puts              : #73
+    conv                  : #10
+    lcd_puts              : #73
+    conv                  : #10
+    lcd_puts              : #73
+    conv                  : #10
+    lcd_puts              : #73
+    conv                  : #10
+    lcd_puts              : #73
+    lcd_time              : #9 
+    delay                 : #208
+    REL_OFF               : #7 
+    REL_OFF               : #7 
+    REL_OFF               : #7 
+    REL_OFF               : #7 
+    REL_OFF               : #7 
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    ESCbut                : #24
+
+F: main                   :#0 
+    SYSTEM_setup          : #1 
+    delay                 : #208
+    SPI_setup             : #1 
+    delay                 : #208
+    lcd_setup             : #4 
+    delay                 : #208
+    lcd_clear             : #21
+    start_int             : #1 
+    Load                  : #1 
+    ini                   : #1 
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_setup             : #4 
+    REL1_ON               : #5 
+    REL2_ON               : #5 
+    REL3_ON               : #5 
+    REL4_ON               : #5 
+    REL6_ON               : #5 
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_out               : #1 
+    ESCbut                : #24
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_money             : #2 
+    lcd_puts              : #73
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    conv                  : #10
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    lcd_time              : #9 
+    lcd_puts              : #73
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    conv                  : #10
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    lcd_time              : #9 
+    lcd_puts              : #73
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    delay                 : #208
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    conv                  : #10
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    lcd_time              : #9 
+    lcd_puts              : #73
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    delay                 : #208
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    conv                  : #10
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    lcd_time              : #9 
+    lcd_puts              : #73
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    delay                 : #208
+    delay                 : #208
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    conv                  : #10
+    lcd_goto              : #74
+    lcd_puts              : #73
+    lcd_puts              : #73
+    lcd_time              : #9 
+    lcd_puts              : #73
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    readEEPROM            : #70
+    readEEPROM            : #70
+    cr_to_time            : #10
+    REL1_ON               : #5 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    readEEPROM            : #70
+    readEEPROM            : #70
+    cr_to_time            : #10
+    REL2_ON               : #5 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    readEEPROM            : #70
+    readEEPROM            : #70
+    cr_to_time            : #10
+    REL3_ON               : #5 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    readEEPROM            : #70
+    readEEPROM            : #70
+    cr_to_time            : #10
+    REL4_ON               : #5 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    readEEPROM            : #70
+    readEEPROM            : #70
+    cr_to_time            : #10
+    REL6_ON               : #5 
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    lcd_puts              : #73
+    lcd_credit            : #8 
+    lcd_goto              : #74
+    lcd_puts_cyr          : #25
+    time_to_cr            : #5 
+    cr_to_time            : #10
+    REL1_ON               : #5 
+    delay                 : #208
+    time_to_cr            : #5 
+    cr_to_time            : #10
+    REL2_ON               : #5 
+    delay                 : #208
+    time_to_cr            : #5 
+    cr_to_time            : #10
+    REL3_ON               : #5 
+    delay                 : #208
+    time_to_cr            : #5 
+    cr_to_time            : #10
+    REL4_ON               : #5 
+    delay                 : #208
+    time_to_cr            : #5 
+    cr_to_time            : #10
+    REL6_ON               : #5 
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    writeEEPROM           : #99
+    delay                 : #208
+    lcd_clear             : #21
+    delay                 : #208
+    lcd_goto              : #74
+    _const3               : #4 
+    lcd_puts              : #73
+    lcd_goto              : #74
+    lcd_puts              : #73
+    delay                 : #208
+    delay                 : #208
+    delay                 : #208
+    lcd_clear             : #21
+    delay                 : #208
+    scan_menu             : #1 
+
+F: _const1                :#2 
+
+F: _const2                :#2 
+
+F: _const3                :#4 
+
+F: _const5                :#2 
+
+
+ L1  highPriorityIntServer
+ L2    _highPriorityInt
+
+ L1  lowPriorityIntServer
+ L2    scan
+ L2    REL1_ON
+ L2    REL2_ON
+ L2    REL3_ON
+ L2    REL4_ON
+ L2    REL6_ON
+ L2    REL_OFF
+ L2    REL_OFF
+
+ L0  main
+ L1    SYSTEM_setup
+ L1    delay
+ L1    SPI_setup
+ L1    delay
+ L1    lcd_setup
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L2      delay
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      delay
+ L2      lcd_write ..
+ L1      delay [T-GOTO]
+ L1    delay
+ L1    lcd_clear
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L1      delay [T-GOTO]
+ L1    start_int
+ L1    Load
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      readEEPROM
+ L1      delay [T-GOTO]
+ L1    ini
+ L1    lcd_clear ..
+ L1    lcd_goto
+ L1      lcd_write [T-GOTO]
+ L1        delay [T-GOTO]
+ L1    lcd_puts
+ L2      _const2
+ L2      _const2
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr
+ L2      _const5
+ L2      _const5
+ L2      lat2cyr
+ L3        _const3
+ L3        _const3
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L1    lcd_setup ..
+ L1    REL1_ON
+ L1    REL2_ON
+ L1    REL3_ON
+ L1    REL4_ON
+ L1    REL6_ON
+ L1    delay
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_puts ..
+ L1    lcd_credit
+ L2      _remU16_8
+ L2      _divU16_8
+ L2      _divU16_8
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L2      _remU16_8
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      _divU16_8
+ L2      lcd_write ..
+ L2      _remU16_8
+ L2      lcd_write ..
+ L1      lcd_puts_cyr [T-GOTO]
+ L2        _const5
+ L2        _const5
+ L2        lat2cyr
+ L3          _const3
+ L3          _const3
+ L2        lcd_write
+ L2          delay [T-GOTO]
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    lcd_out
+ L2      lcd_clear
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L2        delay [T-GOTO]
+ L2      lcd_goto
+ L2        lcd_write [T-GOTO]
+ L2          delay [T-GOTO]
+ L2      lcd_puts
+ L3        _const2
+ L3        _const2
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L1    ESCbut
+ L2      delay
+ L1      delay [T-GOTO]
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_money
+ L2      _divU16_8
+ L2      _remU16_8
+ L2      _divU16_8
+ L2      _remU16_8
+ L2      _remU16_8
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L2      _divU16_8
+ L2      lcd_write ..
+ L2      _remU16_8
+ L2      lcd_write ..
+ L2      _divU16_8
+ L2      lcd_write ..
+ L2      _remU16_8
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      _divU16_8
+ L2      lcd_write ..
+ L2      _remU16_8
+ L1      lcd_write [T-GOTO] ..
+ L1    lcd_puts ..
+ L1    delay
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    conv
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_puts ..
+ L1    lcd_time
+ L2      _divU16_8
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L2      _remU16_8
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      _divU16_8
+ L2      lcd_write ..
+ L2      _remU16_8
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      _divU16_8
+ L2      lcd_write ..
+ L2      _remU16_8
+ L1      lcd_write [T-GOTO] ..
+ L1    lcd_puts ..
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    delay
+ L1    delay
+ L1    delay
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    conv
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_puts ..
+ L1    lcd_time ..
+ L1    lcd_puts ..
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    delay
+ L1    delay
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    conv
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_puts ..
+ L1    lcd_time ..
+ L1    lcd_puts ..
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    delay
+ L1    delay
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    conv
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_puts ..
+ L1    lcd_time ..
+ L1    lcd_puts ..
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    delay
+ L1    delay
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    conv
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    lcd_puts ..
+ L1    lcd_time ..
+ L1    lcd_puts ..
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    delay
+ L1    delay
+ L1    delay
+ L1    delay
+ L1    delay
+ L1    readEEPROM
+ L1    readEEPROM
+ L1    cr_to_time
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L1    REL1_ON
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    delay
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_puts ..
+ L1    lcd_credit ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    readEEPROM
+ L1    readEEPROM
+ L1    cr_to_time ..
+ L1    REL2_ON
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    delay
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_puts ..
+ L1    lcd_credit ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    readEEPROM
+ L1    readEEPROM
+ L1    cr_to_time ..
+ L1    REL3_ON
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    delay
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_puts ..
+ L1    lcd_credit ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    readEEPROM
+ L1    readEEPROM
+ L1    cr_to_time ..
+ L1    REL4_ON
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    delay
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_puts ..
+ L1    lcd_credit ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    readEEPROM
+ L1    readEEPROM
+ L1    cr_to_time ..
+ L1    REL6_ON
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    delay
+ L1    lcd_clear ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    lcd_puts ..
+ L1    lcd_credit ..
+ L1    lcd_goto ..
+ L1    lcd_puts_cyr ..
+ L1    time_to_cr
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L1    cr_to_time ..
+ L1    REL1_ON
+ L1    delay
+ L1    time_to_cr ..
+ L1    cr_to_time ..
+ L1    REL2_ON
+ L1    delay
+ L1    time_to_cr ..
+ L1    cr_to_time ..
+ L1    REL3_ON
+ L1    delay
+ L1    time_to_cr ..
+ L1    cr_to_time ..
+ L1    REL4_ON
+ L1    delay
+ L1    time_to_cr ..
+ L1    cr_to_time ..
+ L1    REL6_ON
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    writeEEPROM
+ L1    delay
+ L1    lcd_clear ..
+ L1    delay
+ L1    lcd_goto ..
+ L1    _const3
+ L1    lcd_puts ..
+ L1    lcd_goto ..
+ L1    lcd_puts ..
+ L1    delay
+ L1    delay
+ L1    delay
+ L1    lcd_clear ..
+ L1    delay
+ L1    scan_menu
+ L2      lcd_goto
+ L2        lcd_write [T-GOTO]
+ L2          delay [T-GOTO]
+ L2      lcd_puts
+ L3        _const2
+ L3        _const2
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L2      _const3
+ L2      lcd_write
+ L2        delay [T-GOTO]
+ L2      ESCbut
+ L3        delay
+ L2        delay [T-GOTO]
+ L2      en_to_dis
+ L3        lcd_goto
+ L3          lcd_write [T-GOTO]
+ L3            delay [T-GOTO]
+ L3        lcd_puts
+ L4          _const2
+ L4          _const2
+ L4          lcd_write
+ L4            delay [T-GOTO]
+ L3        lcd_puts ..
+ L3        writeEEPROM
+ L3        delay
+ L3        lcd_goto ..
+ L3        lcd_puts ..
+ L3        lcd_puts ..
+ L3        delay
+ L2      ESCbut ..
+ L2      en_to_dis ..
+ L2      ESCbut ..
+ L2      en_to_dis ..
+ L2      ESCbut ..
+ L2      en_to_dis ..
+ L2      ESCbut ..
+ L2      en_to_dis ..
+ L2      ESCbut ..
+ L2      test
+ L3        REL1_ON
+ L3        REL2_ON
+ L3        REL3_ON
+ L3        REL4_ON
+ L3        REL6_ON
+ L3        lcd_goto
+ L3          lcd_write [T-GOTO]
+ L3            delay [T-GOTO]
+ L3        lcd_puts
+ L4          _const2
+ L4          _const2
+ L4          lcd_write
+ L4            delay [T-GOTO]
+ L3        lcd_goto ..
+ L3        conv
+ L3        lcd_puts ..
+ L3        conv
+ L3        lcd_puts ..
+ L3        conv
+ L3        lcd_puts ..
+ L3        conv
+ L3        lcd_puts ..
+ L3        conv
+ L3        lcd_puts ..
+ L3        lcd_time
+ L4          _divU16_8
+ L4          lcd_write
+ L4            delay [T-GOTO]
+ L4          _remU16_8
+ L4          lcd_write ..
+ L4          lcd_write ..
+ L4          _divU16_8
+ L4          lcd_write ..
+ L4          _remU16_8
+ L4          lcd_write ..
+ L4          lcd_write ..
+ L4          _divU16_8
+ L4          lcd_write ..
+ L4          _remU16_8
+ L3          lcd_write [T-GOTO] ..
+ L3        delay
+ L3        REL_OFF
+ L3        REL_OFF
+ L3        REL_OFF
+ L3        REL_OFF
+ L3        REL_OFF
+ L3        lcd_goto ..
+ L3        lcd_puts ..
+ L3        lcd_goto ..
+ L3        lcd_puts ..
+ L2        ESCbut [T-GOTO]
+ L3          delay
+ L2          delay [T-GOTO]
+ L2      test ..
+ L2      test ..
+ L2      test ..
+ L2      test ..
+ L2      print_total
+ L3        lcd_goto
+ L3          lcd_write [T-GOTO]
+ L3            delay [T-GOTO]
+ L3        lcd_puts
+ L4          _const2
+ L4          _const2
+ L4          lcd_write
+ L4            delay [T-GOTO]
+ L3        lcd_money
+ L4          _divU16_8
+ L4          _remU16_8
+ L4          _divU16_8
+ L4          _remU16_8
+ L4          _remU16_8
+ L4          lcd_write
+ L4            delay [T-GOTO]
+ L4          _divU16_8
+ L4          lcd_write ..
+ L4          _remU16_8
+ L4          lcd_write ..
+ L4          _divU16_8
+ L4          lcd_write ..
+ L4          _remU16_8
+ L4          lcd_write ..
+ L4          lcd_write ..
+ L4          _divU16_8
+ L4          lcd_write ..
+ L4          _remU16_8
+ L3          lcd_write [T-GOTO] ..
+ L3        lcd_puts ..
+ L2        ESCbut [T-GOTO]
+ L3          delay
+ L2          delay [T-GOTO]
+ L2      print_total ..
+ L2      print_total ..
+ L2      print_total ..
+ L2      print_total ..
+ L2      print_total ..
+ L2      print_total ..
+ L2      print_total ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear
+ L3        lcd_goto
+ L3          lcd_write [T-GOTO]
+ L3            delay [T-GOTO]
+ L3        lcd_puts
+ L4          _const2
+ L4          _const2
+ L4          lcd_write
+ L4            delay [T-GOTO]
+ L2        ESCbut [T-GOTO]
+ L3          delay
+ L2          delay [T-GOTO]
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      readEEPROM
+ L2      delay
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      readEEPROM
+ L2      delay
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      lcd_write ..
+ L2      readEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_clear
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L2        delay [T-GOTO]
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_credit
+ L3        _remU16_8
+ L3        _divU16_8
+ L3        _divU16_8
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L3        _remU16_8
+ L3        lcd_write ..
+ L3        lcd_write ..
+ L3        _divU16_8
+ L3        lcd_write ..
+ L3        _remU16_8
+ L3        lcd_write ..
+ L2        lcd_puts_cyr [T-GOTO]
+ L3          _const5
+ L3          _const5
+ L3          lat2cyr
+ L4            _const3
+ L4            _const3
+ L3          lcd_write
+ L3            delay [T-GOTO]
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      readEEPROM
+ L2      lcd_time
+ L3        _divU16_8
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L3        _remU16_8
+ L3        lcd_write ..
+ L3        lcd_write ..
+ L3        _divU16_8
+ L3        lcd_write ..
+ L3        _remU16_8
+ L3        lcd_write ..
+ L3        lcd_write ..
+ L3        _divU16_8
+ L3        lcd_write ..
+ L3        _remU16_8
+ L2        lcd_write [T-GOTO] ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      delay
+ L2      delay
+ L2      readEEPROM
+ L2      delay
+ L2      delay
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      delay
+ L2      lcd_setup
+ L3        lcd_write
+ L3          delay [T-GOTO]
+ L3        delay
+ L3        lcd_write ..
+ L3        lcd_write ..
+ L3        delay
+ L3        lcd_write ..
+ L2        delay [T-GOTO]
+ L2      lcd_clear ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      delay
+ L2      delay
+ L2      lcd_clear ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_credit ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_time ..
+ L2      lcd_goto ..
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      delay
+ L2      delay
+ L2      delay
+ L2      lcd_setup ..
+ L2      lcd_clear ..
+ L2      delay
+ L2      delay
+ L2      en_to_dis ..
+ L2      en_to_dis ..
+ L2      en_to_dis ..
+ L2      _divU16_8
+ L2      _remU16_8
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_time ..
+ L2      delay
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_clear ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      lcd_goto ..
+ L2      lcd_puts ..
+ L2      ESCbut ..
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      writeEEPROM
+ L2      delay
+ L2      st_clear ..
+

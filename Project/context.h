@@ -2,7 +2,7 @@
 #define CONTEXT_H
 
 #define DEBUG
-#define LCD2
+//#define LCD2
 
 #include <Wire.h>
 // https://arduino-info.wikispaces.com/LCD-Blue-I2C

@@ -1,0 +1,58 @@
+CC8E Version 1.1E, Copyright (c) B Knudsen Data, Norway 2001-2006, No. 2040
+ --> STANDARD edition, 8-24 bit int, 24-32 bit float, 128k code words
+system.c:
+ 17. Mar 2016   2:04
+ Chip = 18F4520
+Warning[1] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\system.c 945 : Local variables and parameters in uncalled functions are not allocated (10)
+ (The application contains non-library functions that are not called. Local
+ variables in these functions (option -wU) are not allocated to save space)
+ RAM : ======== ======== ======== ======== ==...... ........ ........ ........
+  40h: ........ ........ ........ ........ ...***** ******** ******** ********
+  80h: ........ ........ ........ ........ ........ ........ ........ ........
+  C0h: ........ ........ ........ .......* ******** ******** ******** ********
+ Bank  0:62   1:0    2:0    3:256  4:256  5:256  bytes free
+RAM usage: 706 bytes (34 local), 830 bytes free
+Warning[2] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\eeprom.h 173 : Duplicate inline division (math library may save code, option -wi removes warning)
+Warning[3] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\eeprom.h 177 : Duplicate inline division (math library may save code, option -wi removes warning)
+Warning[4] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\eeprom.h 249 : Duplicate inline division (math library may save code, option -wi removes warning)
+Warning[5] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\eeprom.h 250 : Duplicate inline division (math library may save code, option -wi removes warning)
+Warning[6] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\eeprom.h 254 : Duplicate inline division (math library may save code, option -wi removes warning)
+Warning[7] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\lcd.h 189 : Duplicate inline division (math library may save code, option -wi removes warning)
+Warning[8] D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\lcd.h 190 : Duplicate inline division (math library may save code, option -wi removes warning)
+ File 'system.fcs'
+ Optimizing - removed 1255 code words (-16 %)
+ File 'system.var'
+ File 'system.asm'
+ File 'system.lst'
+ File 'system.cod'
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\system.c
+ File 'system.occ'
+ File 'system.hex'
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\system.c
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\18F4520.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\int18xxx.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\defs.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\config.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\print.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\interrupt.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\spi.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\math16.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\functions.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\eeprom.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\lcd.h
+WARNING: String limit in COD file exceeded (max 64 characters):
+D:\Dropbox\Projects\Danubia\1\bez pamet sled OFF_hide_free\menu.h
+Total of 7103 code words (43 %)

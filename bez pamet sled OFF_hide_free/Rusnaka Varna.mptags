@@ -1,0 +1,322 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+ADC	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	5;"	p	line:5	signature:(char)
+ADC	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	70;"	f	line:70	signature:(char ch)
+ADC_value	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	65;"	v	line:65
+BGN	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	9;"	v	line:9
+BRTtemp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	28;"	l	line:28
+CLEAR	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	13;"	v	line:13
+CMD0::0x40	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	3;"	d	line:3
+CMD10::0x4A	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	6;"	d	line:6
+CMD12::0x4C	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	7;"	d	line:7
+CMD13::0x4D	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	8;"	d	line:8
+CMD16::0x50	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	9;"	d	line:9
+CMD17::0x51	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	10;"	d	line:10
+CMD18::0x52	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	11;"	d	line:11
+CMD1::0x41	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	4;"	d	line:4
+CMD24::0x58	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	12;"	d	line:12
+CMD25::0x59	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	13;"	d	line:13
+CMD27::0x5B	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	14;"	d	line:14
+CMD28::0x5C	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	15;"	d	line:15
+CMD29::0x5D	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	16;"	d	line:16
+CMD30::0x5E	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	17;"	d	line:17
+CMD41::0x69	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	18;"	d	line:18
+CMD55::0x77	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	19;"	d	line:19
+CMD59::0x7B	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	20;"	d	line:20
+CMD9::0x49	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	5;"	d	line:5
+CODE	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	56;"	v	line:56
+CONFIG_H	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	80;"	v	line:80
+CONFIG_L	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	81;"	v	line:81
+CR::0x0D	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	11;"	d	line:11
+CardDetect	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	152;"	f	line:152	signature:(void)
+CardDetect	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	7;"	p	line:7	signature:(void)
+Cash	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	14;"	v	line:14
+Chan1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	27;"	v	line:27
+Chan2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	28;"	v	line:28
+Choice	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	3;"	v	line:3
+Cont	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	26;"	v	line:26
+Credit	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	5;"	v	line:5
+DIS	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	23;"	v	line:23
+DOT::0x2E	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	13;"	d	line:13
+Data	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	78;"	v	line:78
+Data	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	53;"	l	line:53
+DataResponse::0x05	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	25;"	d	line:25
+Data_area	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	61;"	v	line:61
+Disable	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	21;"	v	line:21
+EN	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	22;"	v	line:22
+ESCbut	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	11;"	p	line:11	signature:(void)
+ESCbut	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	171;"	f	line:171	signature:(void)
+Enable	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	20;"	v	line:20
+Error	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	24;"	v	line:24
+FINAL_DATA_H	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	85;"	v	line:85
+FINAL_DATA_L	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	86;"	v	line:86
+FLAG::0xFF	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	3;"	d	line:3
+FLAG_POS::0x0F	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	4;"	d	line:4
+Fat_Start1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	58;"	v	line:58
+Fat_Start2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	59;"	v	line:59
+Insert	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	16;"	v	line:16
+LF::0x0A	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	10;"	d	line:10
+LINE1::0x80	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	15;"	d	line:15
+LINE2::0xC0	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	16;"	d	line:16
+Load	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	38;"	f	line:38	signature:(void)
+Load	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	3;"	p	line:3	signature:(void)
+MENU	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	18;"	v	line:18
+MMC_Busy	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	193;"	f	line:193	signature:(void)
+MMC_Busy	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	33;"	p	line:33	signature:(void)
+MMC_Cmd	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	169;"	f	line:169	signature:(uns8 cmd1, uns16 addrH, uns16 addrL, uns8 cmd2)
+MMC_Cmd	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	32;"	p	line:32	signature:(uns8,uns16,uns16,uns8)
+MMC_Init	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	29;"	p	line:29	signature:(void)
+MMC_Init	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	37;"	f	line:37	signature:(void)
+MMC_Read	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	110;"	f	line:110	signature:(uns16 addrH, uns16 addrL)
+MMC_Read	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	30;"	p	line:30	signature:(uns16,uns16)
+MMC_Write	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	142;"	f	line:142	signature:(uns16 addrH, uns16 addrL)
+MMC_Write	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	31;"	p	line:31	signature:(uns16,uns16)
+MMCerr	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	4;"	v	line:4
+Max_Root_Dir	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	55;"	v	line:55
+Mbr	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	29;"	l	line:29
+Menu	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	38;"	v	line:38
+NONpay	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	77;"	v	line:77
+NOTH	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	19;"	v	line:19
+NULL::0x00	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	8;"	d	line:8
+OUT	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	10;"	v	line:10
+Over	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	29;"	v	line:29
+PC_TX	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\pc.h	21;"	f	line:21	signature:(uns8 smb)
+PC_TX	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\pc.h	3;"	p	line:3	signature:(uns8)
+PCcmd	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\pc.h	1;"	p	line:1	signature:(const char*)
+PCcmd	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\pc.h	7;"	f	line:7	signature:(const char *cmd)
+Ready	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	2;"	v	line:2
+Res_sec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	54;"	v	line:54
+RootDir	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	78;"	l	line:78
+Root_Dir_Entry	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	60;"	v	line:60
+SECcount	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	64;"	v	line:64
+SPACE::0x20	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	12;"	d	line:12
+SPI_Send	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\spi.h	1;"	p	line:1	signature:(uns8)
+SPI_Send	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\spi.h	6;"	f	line:6	signature:(uns8 dat)
+SPI_setup	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\spi.h	15;"	f	line:15	signature:(void)
+SPI_setup	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\spi.h	2;"	p	line:2	signature:(void)
+START_DATA_H	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	83;"	v	line:83
+START_DATA_L	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	84;"	v	line:84
+SYSTEM_setup	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	16;"	f	line:16	signature:(void)
+SYSTEM_setup	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	3;"	p	line:3	signature:(void)
+Save	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	17;"	v	line:17
+SecLoad	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	4;"	p	line:4	signature:(void)
+SecLoad	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	51;"	f	line:51	signature:(void)
+SecSearch	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	5;"	p	line:5	signature:(void)
+SecSearch	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	88;"	f	line:88	signature:(void)
+Sec_Per_FAT	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	56;"	v	line:56
+Sec_per_cluster	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	53;"	v	line:53
+Serial	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	15;"	v	line:15
+Set	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	31;"	v	line:31
+SingleBR::0xFE	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	22;"	d	line:22
+SingleBW::0xFE	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	23;"	d	line:23
+TAB::0x09	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	9;"	d	line:9
+TESTF	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	12;"	v	line:12
+TESTS	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	11;"	v	line:11
+Time	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	6;"	v	line:6
+Time1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	7;"	v	line:7
+Time2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	8;"	v	line:8
+UpdateFAT	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	3;"	p	line:3	signature:(void)
+UpdateFAT	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	76;"	f	line:76	signature:(void)
+Wait	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	30;"	v	line:30
+Welc	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	1;"	v	line:1
+_highPriorityInt	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\interrupt.h	1;"	p	line:1	signature:(void)
+_highPriorityInt	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\interrupt.h	65;"	f	line:65	signature:(void)
+a	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	101;"	l	line:101
+a	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	128;"	l	line:128
+a1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	130;"	l	line:130
+a2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	132;"	l	line:132
+addr	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	98;"	l	line:98
+addr_H	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	68;"	v	line:68
+addr_L	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	69;"	v	line:69
+b	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	101;"	l	line:101
+b	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	129;"	l	line:129
+b1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	131;"	l	line:131
+b2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	133;"	l	line:133
+byte	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	10;"	l	line:10
+card	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	98;"	v	line:98
+change	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	10;"	l	line:10
+check	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	104;"	v	line:104
+com	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	37;"	m	line:37
+comp1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	93;"	v	line:93
+comp2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	94;"	v	line:94
+conv	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	125;"	f	line:125	signature:(uns24 pr)
+conv	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	9;"	p	line:9	signature:(uns24)
+count	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	114;"	l	line:114
+count	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	172;"	l	line:172
+count	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	196;"	l	line:196
+cr_to_time	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	4;"	p	line:4	signature:(char)
+cr_to_time	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	95;"	f	line:95	signature:(char ch)
+cred1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	70;"	v	line:70
+cred2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	71;"	v	line:71
+credit	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	66;"	v	line:66
+dec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	181;"	l	line:181
+delay	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	6;"	p	line:6	signature:(char)
+delay	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	84;"	f	line:84	signature:(char count)
+delaySec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	7;"	p	line:7	signature:(char)
+delaySec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	96;"	f	line:96	signature:(char second)
+digit	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	12;"	l	line:12
+dmax	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	13;"	l	line:13
+eAUTOSTART::0xDF	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	24;"	d	line:24
+eBL::0xFB	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	52;"	d	line:52
+eComm::0xFE	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	53;"	d	line:53
+eCounterH::0xDA	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	21;"	d	line:21
+eCounterL::0xDB	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	22;"	d	line:22
+eEN1::0xF6	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	47;"	d	line:47
+eEN2::0xF7	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	48;"	d	line:48
+eHour::0xDC	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	23;"	d	line:23
+eINH::0xFF	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	54;"	d	line:54
+eNONpayH::0xE4	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	29;"	d	line:29
+eNONpayL::0xE6	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	31;"	d	line:31
+eNONpayM::0xE5	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	30;"	d	line:30
+eOPA::0xF0	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	41;"	d	line:41
+eOPB::0xF1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	42;"	d	line:42
+eOPC::0xF2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	43;"	d	line:43
+eOPD::0xF3	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	44;"	d	line:44
+eOPE::0xF4	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	45;"	d	line:45
+eOPF::0xF5	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	46;"	d	line:46
+eOpto1::0xF9	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	50;"	d	line:50
+eOpto2::0xFA	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	51;"	d	line:51
+eZumer::0xF8	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	49;"	d	line:49
+eadr	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	15;"	l	line:15
+eeprom_start::0x00	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	17;"	d	line:17
+emult_cr::0x1F	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	20;"	d	line:20
+emult_timeH::0x0E	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	18;"	d	line:18
+emult_timeL::0x0F	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	19;"	d	line:19
+en_to_dis	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	2;"	p	line:2	signature:(char,uns8)
+en_to_dis	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	764;"	f	line:764	signature:(char ENbit,uns8 ENaddr)
+eoverH::0xE7	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	32;"	d	line:32
+eoverL::0xE9	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	34;"	d	line:34
+eoverM::0xE8	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	33;"	d	line:33
+err1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	95;"	v	line:95
+err2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	96;"	v	line:96
+esc	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	11;"	l	line:11
+etime1H::0xE0	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	25;"	d	line:25
+etime1M::0xE1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	26;"	d	line:26
+etime2H::0xE2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	27;"	d	line:27
+etime2M::0xE3	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	28;"	d	line:28
+etotal1H::0xEA	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	35;"	d	line:35
+etotal1L::0xEC	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	37;"	d	line:37
+etotal1M::0xEB	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	36;"	d	line:36
+etotal2H::0xED	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	38;"	d	line:38
+etotal2L::0xEF	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	40;"	d	line:40
+etotal2M::0xEE	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\defs.h	39;"	d	line:39
+hex2dec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	12;"	p	line:12	signature:(char hex)
+hex2dec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	179;"	f	line:179	signature:(char hex)
+highPriorityIntServer	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\interrupt.h	6;"	f	line:6	signature:(void)
+hour	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	99;"	v	line:99
+i	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	113;"	l	line:113
+i	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	144;"	l	line:144
+i	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	39;"	l	line:39
+ind	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	97;"	v	line:97
+index	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	63;"	v	line:63
+ini	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	4;"	p	line:4	signature:(void)
+ini	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	59;"	f	line:59	signature:(void)
+k	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	9;"	l	line:9
+lcd_adr	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	14;"	l	line:14
+lcd_clear	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	4;"	p	line:4	signature:(void)
+lcd_clear	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	79;"	f	line:79	signature:(void)
+lcd_credit	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	6;"	p	line:6	signature:(void)
+lcd_credit	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	96;"	f	line:96	signature:(void)
+lcd_goto	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	3;"	p	line:3	signature:(uns8 pos)
+lcd_goto	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	71;"	f	line:71	signature:(uns8 pos)
+lcd_money	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	125;"	f	line:125	signature:(void)
+lcd_money	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	8;"	p	line:8	signature:(void)
+lcd_out	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	169;"	f	line:169	signature:(void)
+lcd_out	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	9;"	p	line:9	signature:(void)
+lcd_puts	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	5;"	p	line:5	signature:(const char *)
+lcd_puts	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	88;"	f	line:88	signature:(const char *s)
+lcd_setup	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	2;"	p	line:2	signature:(char)
+lcd_setup	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	57;"	f	line:57	signature:(char mode)
+lcd_time	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	110;"	f	line:110	signature:(void)
+lcd_time	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	7;"	p	line:7	signature:(void)
+lcd_write	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	1;"	p	line:1	signature:(uns8)
+lcd_write	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	33;"	f	line:33	signature:(uns8 c)
+lev	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	103;"	v	line:103
+lowPriorityIntServer	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\interrupt.h	15;"	f	line:15	signature:(void)
+main	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\system.c	16;"	f	line:16	signature:(void)
+min	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	100;"	v	line:100
+mmc	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	46;"	v	line:46
+nError	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\print.h	25;"	v	line:25
+new_value	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	766;"	l	line:766
+next	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	135;"	f	line:135	signature:(void)
+next	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	6;"	p	line:6	signature:(void)
+nextCluster	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	54;"	l	line:54
+overTIME	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	125;"	v	line:125
+overpay	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	76;"	v	line:76
+pp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\system.c	18;"	l	line:18
+pr_n	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	127;"	l	line:127
+print_total	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	11;"	p	line:11	signature:(void)
+print_total	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	190;"	f	line:190	signature:(void)
+r1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	112;"	l	line:112
+r1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	145;"	l	line:145
+r1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	171;"	l	line:171
+r1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	195;"	l	line:195
+r1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\mmc.h	40;"	l	line:40
+readBRT	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	26;"	f	line:26	signature:(void)
+readBRT	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	2;"	p	line:2	signature:(void)
+readEEPROM	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	1;"	p	line:1	signature:(uns8)
+readEEPROM	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	8;"	f	line:8	signature:(uns8 address)
+readMBR	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	11;"	f	line:11	signature:(void)
+readMBR	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	1;"	p	line:1	signature:(void)
+rem1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	91;"	v	line:91
+rem2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	92;"	v	line:92
+retvalue	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	117;"	v	line:117
+scan_menu	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	1;"	p	line:1	signature:(char)
+scan_menu	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	7;"	f	line:7	signature:(char point)
+sec	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	101;"	v	line:101
+sec_mbr	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	50;"	v	line:50
+sec_part	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	51;"	v	line:51
+size	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	113;"	v	line:113
+st_clear	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	10;"	p	line:10	signature:(void)
+st_clear	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	181;"	f	line:181	signature:(void)
+start_int	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	10;"	p	line:10	signature:(void)
+start_int	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	139;"	f	line:139	signature:(void)
+stot	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	102;"	v	line:102
+stp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\fat16.h	90;"	l	line:90
+sysB	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	116;"	v	line:116
+sysD	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	115;"	v	line:115
+temp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	67;"	v	line:67
+terminate	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\pc.h	13;"	f	line:13	signature:(void)
+terminate	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\pc.h	2;"	p	line:2	signature:(void)
+test	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	3;"	p	line:3	signature:(char)
+test	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\menu.h	793;"	f	line:793	signature:(char en)
+tmp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	35;"	l	line:35
+tot	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	73;"	v	line:73
+total1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	74;"	v	line:74
+total2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	75;"	v	line:75
+uart	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	110;"	f	line:110	signature:(void)
+uart	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\functions.h	8;"	p	line:8	signature:(void)
+ubyte	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	124;"	v	line:124
+vAUTOSTART	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	114;"	v	line:114
+vBL	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	109;"	v	line:109
+vComm	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	106;"	v	line:106
+vCounter	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	127;"	v	line:127
+vEN1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	107;"	v	line:107
+vEN2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	108;"	v	line:108
+vINH	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	105;"	v	line:105
+vOPA	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	118;"	v	line:118
+vOPB	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	119;"	v	line:119
+vOPC	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	120;"	v	line:120
+vOPD	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	121;"	v	line:121
+vOPE	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	122;"	v	line:122
+vOPF	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	123;"	v	line:123
+vOpto1	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	111;"	v	line:111
+vOpto2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	112;"	v	line:112
+vZumer	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	110;"	v	line:110
+val	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	99;"	l	line:99
+val_tmp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\system.c	19;"	l	line:19
+value	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	72;"	v	line:72
+wHour	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	88;"	v	line:88
+wTIME	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\config.h	126;"	v	line:126
+writeEEPROM	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	23;"	f	line:23	signature:(uns8 smb, uns8 addr)
+writeEEPROM	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	2;"	p	line:2	signature:(uns8, uns8)
+x	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\lcd.h	127;"	l	line:127
+x2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	100;"	l	line:100
+x2_tmp	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\system.c	20;"	l	line:20
+y2	C:\Users\Peter\Desktop\Projects\Rusnaka Varna ne puska dokato ne nabere kredit, SN ne e v E2\eeprom.h	102;"	l	line:102
