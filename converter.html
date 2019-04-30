@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Converter</title>
+		<meta name='viewport' content='initial-scale=1.0, width=device-width'/>
+		<meta charset="utf-8">
+		<script>
+			var commands = 
+			{
+				"$4": [
+					"Rack reflection Alarm active",
+					"Temperature Alarm active. Laser module temperature is out of specified range.",
+					"Temperature Alarm active. Laser remote head temperature is out of specified range.",
+					"System Alarm active",
+					"+24V main supply Alarm active. Overvoltage or Undervoltage of main electrical supply occurred during the laser emission.",
+					"HK supply Alarm active. Overvoltage or Undervoltage of the 24V housekeeping electrical supply occurred during the laser emission.",
+					"Laser is ready for emission",
+					"At least one of the warnings is activated"
+				],
+				"$10": [
+					"Latched D0 D0 latched power setting",
+					"Latched D1 D1 latched power setting",
+					"Latched D2 D2 latched power setting",
+					"Latched D3 D3 latched power setting",
+					"Latched D4 D4 latched power setting",
+					"Latched D5 D5 latched power setting",
+					"Latched D6 D6 latched power setting",
+					"Latched D7 D7 latched power setting",
+					"pin 1 D0 power setting",
+					"pin 2 D1 power setting",
+					"pin 3 D2 power setting",
+					"pin 4 D3 power setting",
+					"pin 5 D4 power setting",
+					"pin 6 D5 power setting",
+					"pin 7 D6 power setting",
+					"pin 8 D7 power setting",
+					"pin 9 Latch",
+					"pin 23 AuXOFF",
+					"pin 19 Emi55ion Modulation",
+					"pin 22 Guide 1a5er control",
+					"pin 20 External Synchronization",
+					"pin 18 Emi55ion enable",
+					"pin 10 Bit is reserved for future use",
+					"pin 13 Bit is reserved for future use",
+					"pin 16 A1arm0",
+					"pin 21 A1arm1",
+					"pin 11 A1arm2",
+					"pin 12 Bit is reserved for future use",
+					"pin 24 Bit is reserved for future use",
+					"Reserved Bit is reserved for future use",
+					"Reserved Bit is reserved for future use",
+					"Reserved Bit is reserved for future use"
+				],
+				"$11": [
+					"Emergency stop was activated - Warning",
+					"External synchronization frequency on 20pin is above specification - Warning",
+					"External synchronization frequency on 20pin is below specification - Warning",
+					"Reserved",
+					"Reserved",
+					"Guide laser was activated - Warning",
+					"Reserved - Warning",
+					"Reserved - Warning",
+					"Laser emission is ON (1a5eri5 pumped) - Information",
+					"Reserved",
+					"Reserved",
+					"Laser emi55ion ON command was received by RS232C - Information",
+					"Guide 1a5er ON command was received by RS232C - Information",
+					"24V Main supply voltage is in specified range - Warning",
+					"HK supply voltage is in specified range - Warning",
+					"Emission Enable is switched ON by RS'232 - Warning",
+				],
+				"$23-$26": [
+					"1 Power control (D0'D7) by 1313-25 18 / 0 Power control (D0'D7) by RS'232",
+					"Reserved",
+					"1 AuXOFF control by 1313-25 23 / 0 AuXOFF disabled",
+					"1 Guide 1a5er control by DB'25 22 / 0 Guide 1a5er control by RS'232",
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"1 Emission Modulation control by 1313-25 19 / 0 Emission Modulation control by RS'232",
+					"Reserved",
+					"Reserved",
+					"1 Bitstream 1 (BS1) mode is active (to activate) N/A / 0 Not active (to deactivate)",
+					"Reserved",
+					"1 Sync PRR control by 1313-25 20 / 0 Internal trigger generator by RS'232",
+					"1 Emission Enable control by DB'25 18 / 0 Emission Enable control by RS'232",
+					"Reserved",
+					"Latch control by DB'25 9 / Automatic latch",
+					"Reserved",
+					"Reserved",
+					"Reserved"
+				],
+				"$25": [
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"Adjustable pulse duration mode is installed",
+					"Reserved",
+					"Extended PRR mode is installed",
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"Bitstream 1 (BS1) option is installed",
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"Reserved",
+					"Guide laser is installed",
+					"HC (high contrast) is installed",
+					"Remote amplifier is installed"
+				]
+			};
+			
+			function onLoad() {
+				var select = document.getElementById("commands");
+				for (var key of Object.keys(commands)) {
+					var opt = document.createElement("option");
+					opt.value = key;
+					opt.innerHTML = key;
+					select.appendChild(opt);
+				}
+			}
+		
+			var command = Object.keys(commands)[0];
+			
+			function commandChanged(sender) {
+				command = sender.value;
+			}
+			
+			function convert(sender) {
+				var value = sender.value;
+				if (value == "") value = 0;
+				var bin = parseInt(value, 10).toString(2);
+				while (bin.length < commands[command].length)
+					bin = "0" + bin;
+				var output = document.getElementById("output");
+				output.innerHTML = "<br/>" + bin + " / ";
+				if (command == "$10") {
+					for (var i = commands[command].length / 8 - 1; i >= commands[command].length / 8 - 2; i--) {
+						output.innerHTML += parseInt(bin.substr(i * 8, 8), 2) + "-";
+					}
+				}
+				output.innerHTML += "<br/><br/>";
+				for (var i = 0; i < commands[command].length; i++) {
+					var b = bin[bin.length - 1 - i];
+					var desc = commands[command][i];
+					if (b == 1)
+						output.innerHTML += "<b>" + b + " " + desc + "</b><br/>"
+					else
+						output.innerHTML += b + " " + desc + "<br/>";
+				}
+				output.innerHTML += "<br/>";
+				
+				if (command == "$10") {
+					var pin11 = bin[5];
+					var pin16 = bin[7];
+					var pin21 = bin[6];
+					if (pin11 == "0" && pin16 == "0" && pin21 == "0")
+						output.innerHTML += "<b>Temperature alarm</b>";
+					else if (pin11 == "1" && pin16 == "0" && pin21 == "0")
+						output.innerHTML += "<b>Power supply alarm</b>";
+					else if (pin11 == "0" && pin16 == "0" && pin21 == "1")
+						output.innerHTML += "<b>Normal operation</b>";
+					else if (pin11 == "1" && pin16 == "0" && pin21 == "1")
+						output.innerHTML += "<b>Laser is not ready for emission</b>";
+					else if (pin11 == "0" && pin16 == "1" && pin21 == "0")
+						output.innerHTML += "<b>Back reﬂection alarm</b>";
+					else if (pin11 == "1" && pin16 == "1" && pin21 == "0")
+						output.innerHTML += "<b>Reserved</b>";
+					else if (pin11 == "0" && pin16 == "1" && pin21 == "1")
+						output.innerHTML += "<b>System alarm</b>";
+					else if (pin11 == "1" && pin16 == "1" && pin21 == "1")
+						output.innerHTML += "<b>Reserved</b>";
+				}
+			}
+		</script>
+	</head>
+	<body onload="onLoad()">
+		Command:
+		<select id="commands" onchange="commandChanged(this)">
+		</select>
+		<br/><br/>
+		Value:
+		<input type="number" oninput="convert(this)"/>
+		<div id="output"></div>
+	</body>
+</html>
