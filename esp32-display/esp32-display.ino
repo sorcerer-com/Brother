@@ -11,12 +11,13 @@
 #include <FFat.h>
 
 #include "FSBrowser.h"
+#include "Font/font.c"
 
 #define GFX_BL DF_GFX_BL  // default backlight pin, you may replace DF_GFX_BL to actual backlight pin
 #define TFT_BL 2
 
 #define BACKGROUND BLACK
-#define TEXT_COLOR WHITE
+#define BACKLIGHT 256  // 0 - 256
 
 WebServer httpServer(80);
 HTTPUpdateServer httpUpdater;
@@ -61,7 +62,7 @@ void setup() {
 
 #ifdef TFT_BL
   pinMode(TFT_BL, OUTPUT);
-  digitalWrite(TFT_BL, HIGH);
+  analogWrite(TFT_BL, BACKLIGHT);
 #endif
 }
 
@@ -99,7 +100,7 @@ void loop() {
 
     if (cmnd == "clear") {
       gfx->fillScreen(BACKGROUND);
-      Serial.printf("clear");
+      Serial.println("clear");
     }
 
     // text <x> <y> <scale> <color:ffffff> <text>
@@ -124,7 +125,8 @@ void loop() {
       gfx->setTextSize(scale);
       gfx->setTextColor(RGB565(r, g, b));
       gfx->setUTF8Print(true);
-      gfx->setFont(u8g2_font_unifont_t_cyrillic);
+      //gfx->setFont(u8g2_font_unifont_t_cyrillic);
+      gfx->setFont(custom_cyrillic);
       gfx->println(text);
     }
 
