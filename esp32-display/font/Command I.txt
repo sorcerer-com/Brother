@@ -1,0 +1,27 @@
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>set tmpdir=%temp%
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>set tmpdir=%temp%
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf times.ttf -o times.bdf
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 "Seven Segment.ttf" -o "Seven Segment.bdf"
+otf2bdf[1]: unable to open input file 'Seven Segment.ttf'.
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 Seven Segment.ttf -o Seven Segment.bdf
+otf2bdf[1]: unable to open input file 'Segment.bdf'.
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 Ariel.ttf -o Ariel.bdf
+otf2bdf[1]: unable to open input file 'Ariel.ttf'.
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 "Seven Segment.ttf" -o "Seven Segment.bdf"
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 Ariel.ttf -o Ariel.bdf
+otf2bdf[1]: unable to open input file 'Ariel.ttf'.
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 Arial.ttf -o Arial.bdf
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 "7 Segment.ttf" -o "7 Segment.bdf"
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 "DSEG7Classic-Bold.ttf" -o "DSEG7Classic-Bold.bdf"
+
+D:\Esp32-display\2\esp32-display\font\otf2bdf3-win32>otf2bdf -r 72 -p 60 "DSEG7Classic-Bold.ttf" -o "DSEG7Classic-Bold.bdf"

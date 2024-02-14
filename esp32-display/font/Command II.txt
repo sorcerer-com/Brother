@@ -1,0 +1,29 @@
+ Directory of D:\Esp32-display\2\esp32-display\font
+
+14/12/2023  23:11    <DIR>          .
+14/12/2023  23:11    <DIR>          ..
+14/12/2023  22:59    <DIR>          7 Segment
+14/12/2023  22:59             3,759 7 Segment.zip
+12/12/2023  20:04           275,572 Arial.ttf
+12/12/2023  20:04           250,022 bdfconv.exe
+13/05/2009  21:53           603,136 BDFViewer.exe
+15/03/2020  02:50            23,040 DSEG7Classic-Bold.ttf
+12/12/2023  20:04           517,037 font.bdf
+12/12/2023  20:04            50,624 font.c
+14/12/2023  23:07    <DIR>          fonts-DSEG_v046
+14/12/2023  23:06         1,095,157 fonts-DSEG_v046.zip
+13/12/2023  20:54            53,623 font_7_segm.bdf
+12/12/2023  23:03    <DIR>          freetype6
+12/12/2023  23:02           286,971 freetype6.zip
+14/12/2023  23:11    <DIR>          otf2bdf3-win32
+12/12/2023  20:04           143,076 otf2bdf3-win32.zip
+14/12/2023  22:55               475 readme.txt
+23/05/2019  12:38            29,076 Seven Segment.ttf
+12/12/2023  22:51             8,753 seven_segment.zip
+12/12/2023  20:04           347,988 times.ttf
+              15 File(s)      3,688,309 bytes
+               6 Dir(s)  16,029,396,992 bytes free
+
+D:\Esp32-display\2\esp32-display\font>bdfconv.exe -f 1 -m "0-127" -n custom_7_segm -o font_7segm.c DSEG7Classic-Bold.bdf
+
+D:\Esp32-display\2\esp32-display\font>
